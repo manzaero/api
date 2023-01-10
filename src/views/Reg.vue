@@ -1,6 +1,6 @@
 <template>
   <form class="card" @submit.prevent="regSubmit">
-    <h1>Регистрация</h1>
+    <h1>Регистрация для админки</h1>
 
     <div :class="['form-control', {invalid:fnError}]">
       <label for="FirstName">Имя</label>
