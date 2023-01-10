@@ -28,6 +28,7 @@ export default {
                 console.log('Вошёл')
             } catch (e) {
                 console.log(error(e.message))
+                throw new Error()
             }
         },
         async register({commit}, payload){

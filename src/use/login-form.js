@@ -26,8 +26,12 @@ export function useLoginForm(){
     );
     const onSubmit = handleSubmit(async values => {
         console.log('From', values)
-        await store.dispatch('auth/login', values)
-        router.push('/')
+        try {
+            await store.dispatch('auth/login', values)
+            router.push('/')
+        } catch (e) {
+
+        }
     });
 
     const isToManyInter = computed(() => submitCount.value >= 3);
