@@ -1,0 +1,37 @@
+<template>
+  <form class="card" @submit.prevent="onSubmit">
+    <h1>Войти в кабинет</h1>
+    <div :class="['form-control', {invalid:phError}]">
+      <label for="phone">Телефон</label>
+      <input type="phone" id="phone" v-model="Phone" @blur="phBlur">
+      <small v-if="phError">{{phError}}</small>
+    </div>
+
+    <div :class="['form-control', {invalid: pError}]">
+      <label for="password">Пароль</label>
+      <input type="password" id="password" v-model="Password" @blur="pBlur">
+      <small v-if="pError">{{pError}}</small>
+    </div>
+
+    <button class="btn primary" type="submit" :disabled="isSubmitting || isToManyInter">Войти</button>
+    <router-link to="/reg">
+      <button class="btn">Регистрация</button>
+    </router-link>
+    <span class="text-danger" v-if="isToManyInter">Не так часто!</span>
+  </form>
+</template>
+
+<script>
+import {useLoginForm} from "@/use/login-form";
+
+export default {
+  setup(){
+    return {...useLoginForm()}
+  },
+  name: "Auth"
+}
+</script>
+
+<style scoped>
+
+</style>
