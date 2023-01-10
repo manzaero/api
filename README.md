@@ -17,7 +17,7 @@ npm run build
 
 ### Описание
 ```
-Форма регистрации и авторизации VUE 3(axios+vuex+router+register)
+Форма регистрации и авторизации Vue 3 (axios+vuex+router+register)
 ```
 
 ### Customize configuration
