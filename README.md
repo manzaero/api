@@ -15,5 +15,10 @@ npm run serve
 npm run build
 ```
 
+### Описание
+```
+Форма регистрации и авторизации VUE 3(axios+vuex+router+register)
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
