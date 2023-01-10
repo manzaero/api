@@ -26,12 +26,13 @@ export default {
                 const apiToken = await axios.post(`${API_URL}/login`, payload)
                 commit('setToken', apiToken.data.access_token)
                 console.log('Вошёл')
+                commit('clearMessage', null, {root: true})
             } catch (e) {
                 dispatch('setMessage', {
                     value: error(e.message),
                     type: 'danger'
                 }, {root: true})
-                console.log(error(e.message))
+                // console.log(error(e.message))
                 throw new Error()
             }
         },

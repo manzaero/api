@@ -1,6 +1,7 @@
 const ERROR_CODE = {
     "Request failed with status code 422" : 'Пользователь с таким  номером телефона не найден!',
-    "Request failed with status code 401" : "Не верно указан пароль!"
+    "Request failed with status code 401" : "Не верно указан пароль!",
+    auth: 'Пожалуйста войдите в систему'
 }
 
 export function error(code){
