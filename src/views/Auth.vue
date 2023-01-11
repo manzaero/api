@@ -1,6 +1,6 @@
 <template>
 	<form class="card" @submit.prevent="onSubmit">
-		<h1>Вход в админ</h1>
+		<h1>Вход в кабинет</h1>
 		<div :class="['form-control', { invalid: phError }]">
 			<label for="phone">Телефон</label>
 			<input type="phone" id="phone" v-model="Phone" @blur="phBlur">

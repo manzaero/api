@@ -3,10 +3,10 @@
     <h3>Управление</h3>
     <ul class="navbar-menu">
       <li>
-        <router-link to="/">test</router-link>
+        <router-link to="/">Список</router-link>
       </li>
       <li>
-        <router-link to="/">test</router-link>
+        <router-link to="/help">test</router-link>
       </li>
       <li>
         <a href="#">test</a>
