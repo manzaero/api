@@ -106,7 +106,8 @@ h3 {
 
 .btn.primary {
 	background: #66A5AD;
-	color: #fff;
+	color: #003B46;
+	font-weight: 700;
 }
 
 .btn.danger {
