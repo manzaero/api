@@ -122,8 +122,21 @@ h3 {
 }
 
 .container {
-	margin: 200px auto;
-	max-width: 1000px;
+	margin: 0 auto;
+	max-width: 1200px;
+}
+
+.container_auth {
+	margin: 20px auto;
+	max-width: 500px;
+	position: relative;
+}
+
+.container_alert {
+	width: auto;
+	height: 140px;
+	display: block;
+	margin: 0 auto;
 }
 
 .container.with-nav {

@@ -1,6 +1,8 @@
 <template>
-  <div class="container">
-    <app-message/>
+  <div class="container_auth">
+    <div class="container_alert">
+      <app-message/>
+    </div>
     <router-view/>
   </div>
 </template>
