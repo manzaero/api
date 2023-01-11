@@ -15,7 +15,7 @@ export default {
     }
   },
   setup(props){
-    document.info = `${props.info} | Clone info`
+    document.info = `${props.info}`
   }
 }
 </script>

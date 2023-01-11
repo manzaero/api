@@ -1,6 +1,8 @@
 <template>
   <app-page title="Список">
-
+    <template #header>
+      <button class="btn primary">Создать</button>
+    </template>
   </app-page>
 
   <app-footer info="test">
