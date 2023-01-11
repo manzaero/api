@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 * {
 	box-sizing: border-box;
 }
 
 body {
-	font-family: Inter, Roboto, Oxygen, Fira Sans, Helvetica Neue, sans-serif;
+	font-family: 'Sofia Sans', sans-serif, Inter, Roboto, Oxygen, Fira Sans, Helvetica Neue, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-size: 16px;
-	color: #2c3e50;
-	background: #2c3a90;
+	color: #07575B;
+	text-align: center;
+	background: #C4DFE6;
 }
 
 hr {
@@ -29,7 +29,7 @@ ul {
 }
 
 a {
-	color: #3eaf7c;
+	color: #07575B;
 	font-weight: 500;
 	text-decoration: none;
 }
@@ -45,7 +45,7 @@ h6 {
 }
 
 h1 {
-	font-size: 2.2rem;
+	font-size: 2rem;
 	font-weight: 600;
 }
 
@@ -68,20 +68,20 @@ h3 {
 /*}*/
 
 .btn {
-	color: #1d1f96;
+	color: #66A5AD;
 	position: relative;
 	place-content: center;
 	place-items: center;
 	width: fit-content;
 	border-radius: 99px;
 	letter-spacing: 0.05em;
-	border: 1px solid #2c3a90;
+	border: 1px solid #003B46;
 	text-decoration: none;
 	text-transform: uppercase;
 	margin-right: 10px;
 	padding: 0.5rem 1.5rem;
 	white-space: nowrap;
-	font-weight: 700;
+	font-weight: 300;
 	outline: none;
 	background: #fff;
 	transition: all 0.22s;
@@ -95,9 +95,9 @@ h3 {
 .btn:disabled {
 	cursor: not-allowed;
 	opacity: 1 !important;
-	background: #eee !important;
-	border-color: #ddd !important;
-	color: #999 !important;
+	background: #C4DFE6 !important;
+	border-color: #C4DFE6 !important;
+	color: #C4DFE6 !important;
 }
 
 .btn:active {
@@ -105,20 +105,20 @@ h3 {
 }
 
 .btn.primary {
-	background: #2c3a90;
+	background: #003B46;
 	color: #fff;
 }
 
 .btn.danger {
-	background: #e53935;
+	background: #C8000A;
 	color: #fff;
-	border-color: #e53935;
+	border-color: #8C0004;
 }
 
 .btn.warning {
-	background: #c25205;
+	background: #EDAE01;
 	color: #fff;
-	border-color: #c25205;
+	border-color: #E94F08;
 }
 
 .container {
@@ -163,7 +163,7 @@ h3 {
 .form-control input,
 .form-control select,
 .form-control textarea {
-	font-family: Inter, Roboto, Oxygen, Fira Sans, Helvetica Neue, sans-serif;
+	font-family: 'Sofia Sans', sans-serif, Inter, Roboto, Oxygen, Fira Sans, Helvetica Neue, sans-serif;
 	margin: 0;
 	outline: none;
 	border: 2px solid #ccc;
@@ -215,7 +215,7 @@ h3 {
 	padding: 1rem;
 	margin-bottom: 1rem;
 	border-radius: 3px;
-	box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 2px 3px 10px rgba(0, 59, 70, 1);
 	background: #fff;
 }
 
@@ -262,17 +262,17 @@ h3 {
 
 .alert.primary {
 	border-color: #42b983;
-	background-color: #f8f8f8;
+	background-color: #C4DFE6;
 }
 
 .alert.danger {
-	border-color: #e53935;
+	border-color: #07575B;
 	background-color: #f8f8f8;
 }
 
 .alert.warning {
-	border-color: #c25205;
-	background-color: #f8f8f8;
+	border-color: #C8000A;
+	background-color: #EDAE01;
 }
 
 .alert p {
@@ -424,7 +424,7 @@ h3 {
 
 .navbar-menu li a:hover,
 .navbar-menu li a.active {
-	border-bottom: 2px solid #3eaf7c;
+	border-bottom: 2px solid #07575B;
 }
 
 .card-title {
@@ -441,8 +441,8 @@ h3 {
 }
 
 .badge.primary {
-	border-color: #3eaf7c;
-	color: #3eaf7c;
+	border-color: #07575B;
+	color: #07575B;
 }
 
 .badge.danger {
@@ -541,3 +541,4 @@ h3 {
 .question-title {
 	font-weight: bold;
 }
+

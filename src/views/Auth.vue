@@ -17,7 +17,7 @@
 		<router-link to="/reg">
 			<button class="btn">Регистрация</button>
 		</router-link>
-		<span class="text-danger" v-if="isToManyInter">Не так часто!</span>
+		<div class="text-danger" v-if="isToManyInter">Не так часто!</div>
 	</form>
 </template>
 
