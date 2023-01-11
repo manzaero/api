@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar">
-    <h3>Control</h3>
+    <h3>Управление</h3>
     <ul class="navbar-menu">
       <li>
         <router-link to="/">test</router-link>
