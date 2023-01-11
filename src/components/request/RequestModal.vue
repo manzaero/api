@@ -23,7 +23,7 @@
         <option value="pending">В ожидании</option>
       </select>
     </div>
-    <button class="btn primary">Добавить</button>
+    <button class="btn danger" @submit.prevent>Добавить</button>
   </form>
 </template>
 
