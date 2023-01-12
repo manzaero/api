@@ -44,13 +44,6 @@ export default {
                 console.dir(e)
             }
             // commit('setToken', 'TEST TOKEN')
-        },
-        async get({commit}, payload){
-            try {
-                const getToken = await axios.get(`${API_URL}/users`, payload)
-            } catch (e) {
-                
-            }
         }
     },
     getters:{
