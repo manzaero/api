@@ -12,10 +12,11 @@
     </teleport>
   </app-page>
 
-  <app-footer info="test">
+  <app-footer test="test">
 
 
   </app-footer>
+
 </template>
 
 <script>

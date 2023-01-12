@@ -1,21 +1,21 @@
 <template>
   <div class="card">
-    <h3 class="card-title">{{info}}</h3>
-
-    <slot/>
+    <div class="card-title">
+      {{test}}
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   props:{
-    info:{
+    test:{
       type: String,
       required: true
     }
   },
   setup(props){
-    document.info = `${props.info}`
+    document.test = `${props.test}`
   }
 }
 </script>

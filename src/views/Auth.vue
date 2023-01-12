@@ -14,6 +14,7 @@
 		</div>
 
 		<button class="btn primary" type="submit" :disabled="isSubmitting || isToManyInter">Войти</button>
+
 		<router-link to="/reg">
 			<button class="btn">Регистрация</button>
 		</router-link>
