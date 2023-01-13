@@ -29,7 +29,7 @@ export default {
                 commit('clearMessage', null, {root: true})
             } catch (e) {
                 dispatch('setMessage', {
-                    value: error(e),
+                    value: error(e.message),
                     type: 'danger'
                 }, {root: true})
                 console.log(error(e.message))
