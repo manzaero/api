@@ -5,5 +5,5 @@ const ERROR_CODE = {
 }
 
 export function error(code){
-    return ERROR_CODE[code] ? ERROR_CODE[code] : 'Неизвестная ошибка!'
+    return ERROR_CODE[code] ? ERROR_CODE[code] : 'Нет связи с интернетом или сервер не отвечает!'
 }
