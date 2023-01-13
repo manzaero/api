@@ -7,9 +7,9 @@
     <div class="card" v-for="user in users" :key="user.id">
       <div class="card">
         <ul>
-          <li>{{user.name}}</li>
-          <li>{{user.username}}</li>
-          <li>{{user.email}}</li>
+          <li>Name: {{user.name}}</li>
+          <li>Username: {{user.username}}</li>
+          <li>E-mail: {{user.email}}</li>
         </ul>
       </div>
     </div>
@@ -19,6 +19,7 @@
 
 <script>
 import axios from "axios";
+import store from "@/store";
 
 export default {
   props:{
@@ -35,7 +36,13 @@ export default {
   methods:{
     async getUsers(){
       try {
-        const response = await axios.get('https://jsonplaceholder.typicode.com/users')
+        const token = {
+          headers: {Authorization: `Bearer ${store.state["auth/token"]}`}
+        };
+        const params = {
+          key: value
+        }
+        const response = await axios.get('https://test.octopus.uz/api/v1/users')
         this.users = response.data
         } catch (e) {
         console.error(e)
