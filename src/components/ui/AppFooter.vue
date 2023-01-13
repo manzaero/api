@@ -42,7 +42,10 @@ export default {
         const params = {
           key: value
         }
-        const response = await axios.get('https://test.octopus.uz/api/v1/users')
+        const response = await axios.get('https://test.octopus.uz/api/v1/users',
+            {
+              headers: {"Authorization": `Bearer ${token}`},
+              key: "value"})
         this.users = response.data
         } catch (e) {
         console.error(e)
