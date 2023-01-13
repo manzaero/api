@@ -37,7 +37,7 @@ export default {
       try {
         const response = await axios.get('https://jsonplaceholder.typicode.com/users')
         this.users = response.data
-      } catch (e) {
+        } catch (e) {
         console.error(e)
       }
     }
