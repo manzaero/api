@@ -7,9 +7,10 @@
 		<div class="card" v-for="user in users" :key="user.id">
 			<div class="card">
 				<ul>
-					<li>Name: {{ user.name }}</li>
-					<li>Username: {{ user.username }}</li>
-					<li>E-mail: {{ user.email }}</li>
+					<li>Name: {{ user.Phone }}</li>
+					<li>Username: {{ user.FirstName }}</li>
+					<li>E-mail: {{ user.Email }}</li>
+          <li>Role: {{user.Role}}</li>
 				</ul>
 			</div>
 		</div>
@@ -40,10 +41,13 @@ export default {
       }
       const users = axios.get('https://test.octopus.uz/api/v1/users', {
         headers: {
-          'Authorization': `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90ZXN0Lm9jdG9wdXMudXpcL2FwaVwvdjFcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjczOTU3MzQzLCJleHAiOjE2NzM5NjA5NDMsIm5iZiI6MTY3Mzk1NzM0MywianRpIjoiUFpUZ2xoMGZqVE1halVQNCIsInN1YiI6MzQsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.cU9EGx9yOtiZ0Qa9D6jFRvGOU9Xbp-GSvyCsYocnBk4`
+          'Authorization': `bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90ZXN0Lm9jdG9wdXMudXpcL2FwaVwvdjFcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjczOTU5ODI0LCJleHAiOjE2NzM5NjM0MjQsIm5iZiI6MTY3Mzk1OTgyNCwianRpIjoiMEVrcUQ1djVUck5EVDNFNSIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Ugj-u_UwaqURlWxmFUhD7d1JOmr-WruKD-5S4vTPWJU`
         }
       })
-      console.log(users)
+          .then((res) => {
+            this.users = res.data.data
+            console.log(res.data.data)
+          })
     }
   }
 }
