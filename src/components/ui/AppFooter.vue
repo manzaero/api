@@ -1,18 +1,20 @@
 <template>
-  <div class="card">
-    <div class="card-title">
-      <h3>{{test}}</h3>
-    </div>
-    <hr>
-    <div class="card" v-for="user in users" :key="user.id">
-      <div class="card">
-        <ul>
-          <li>Name: {{user.name}}</li>
-        </ul>
-      </div>
-    </div>
-    <button class="btn danger" @click="getUsers">Load</button>
-  </div>
+	<div class="card">
+		<div class="card-title">
+			{{ test }}
+		</div>
+		<hr>
+		<div class="card" v-for="user in users" :key="user.id">
+			<div class="card">
+				<ul>
+					<li>Name: {{ user.name }}</li>
+					<li>Username: {{ user.username }}</li>
+					<li>E-mail: {{ user.email }}</li>
+				</ul>
+			</div>
+		</div>
+		<button class="btn danger" @click="getUsers">Load</button>
+	</div>
 </template>
 
 <script>
