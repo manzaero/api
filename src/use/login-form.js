@@ -28,7 +28,7 @@ export function useLoginForm(){
         console.log('From', values)
         try {
             await store.dispatch('auth/login', values)
-            router.push('/')
+            await router.push('/')
         } catch (e) {
             console.log(e.message())
         }

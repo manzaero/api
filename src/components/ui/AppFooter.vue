@@ -10,7 +10,6 @@
 					<li>Name: {{ user.Phone }}</li>
 					<li>Username: {{ user.FirstName }}</li>
 					<li>E-mail: {{ user.Email }}</li>
-          <li>Role: {{user.Role}}</li>
 				</ul>
 			</div>
 		</div>
@@ -36,9 +35,6 @@ export default {
   },
   methods:{
     getUsers(){
-      const params = {
-
-      }
       const users = axios.get('https://test.octopus.uz/api/v1/users', {
         headers: {
           'Authorization': `bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90ZXN0Lm9jdG9wdXMudXpcL2FwaVwvdjFcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjczOTU5ODI0LCJleHAiOjE2NzM5NjM0MjQsIm5iZiI6MTY3Mzk1OTgyNCwianRpIjoiMEVrcUQ1djVUck5EVDNFNSIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Ugj-u_UwaqURlWxmFUhD7d1JOmr-WruKD-5S4vTPWJU`
