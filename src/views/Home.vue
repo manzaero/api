@@ -12,7 +12,7 @@
     </teleport>
   </app-page>
 
-  <app-footer test="test">
+  <app-footer test="Users">
 
 
   </app-footer>

@@ -1,15 +1,13 @@
 <template>
   <div class="card">
     <div class="card-title">
-      {{test}}
+      <h3>{{test}}</h3>
     </div>
     <hr>
     <div class="card" v-for="user in users" :key="user.id">
       <div class="card">
         <ul>
           <li>Name: {{user.name}}</li>
-          <li>Username: {{user.username}}</li>
-          <li>E-mail: {{user.email}}</li>
         </ul>
       </div>
     </div>
@@ -30,26 +28,20 @@ export default {
   },
   data(){
     return {
-      users: []
+      users: null
     }
   },
   methods:{
-    async getUsers(){
-      try {
-        const token = {
-          headers: {Authorization: `Bearer ${store.state["auth/token"]}`}
-        };
-        const params = {
-          key: value
-        }
-        const response = await axios.get('https://test.octopus.uz/api/v1/users',
-            this.token)
-        // this.users = response.data
-        console.log(params)
-        console.log(response)
-        } catch (e) {
-        console.error(e)
+    getUsers(){
+      const params = {
+
       }
+      const users = axios.get('https://test.octopus.uz/api/v1/users', {
+        headers: {
+          'Authorization': `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90ZXN0Lm9jdG9wdXMudXpcL2FwaVwvdjFcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjczOTU3MzQzLCJleHAiOjE2NzM5NjA5NDMsIm5iZiI6MTY3Mzk1NzM0MywianRpIjoiUFpUZ2xoMGZqVE1halVQNCIsInN1YiI6MzQsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.cU9EGx9yOtiZ0Qa9D6jFRvGOU9Xbp-GSvyCsYocnBk4`
+        }
+      })
+      console.log(users)
     }
   }
 }
