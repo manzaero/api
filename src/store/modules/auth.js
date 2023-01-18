@@ -25,6 +25,7 @@ export default {
             try {
                 const apiToken = await axios.post(`${API_URL}/auth/login`, payload)
                 commit('setToken', apiToken.data)
+                console.log(apiToken.data)
                 console.log('Вошёл')
                 commit('clearMessage', null, {root: true})
             } catch (e) {
@@ -44,6 +45,15 @@ export default {
                 console.dir(e)
             }
             // commit('setToken', 'TEST TOKEN')
+        },
+        async getTest({commit}){
+            const getUsers = await axios.get(`${API_URL}/users`, {
+                headers: {
+                    'Authorization': `Bearer ${JSON.stringify(localStorage.getItem(this.token))}`
+            }
+            })
+            commit(getUsers.data)
+            console.log(getUsers.data)
         }
     },
     getters:{
