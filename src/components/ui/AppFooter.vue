@@ -14,7 +14,6 @@
 			</div>
 		</div>
 		<button class="btn danger" @click="getUsers">Load</button>
-    <button class="btn primary" @click="getTest">test</button>
 	</div>
 </template>
 
@@ -36,18 +35,7 @@ export default {
   },
   methods:{
     getUsers(){
-      const users = axios.get('https://test.octopus.uz/api/v1/users', {
-        headers: {
-          'Authorization': `bearer ${localStorage.getItem('jwt-token')}`
-        }
-      })
-          .then((res) => {
-            this.users = res.data.data
-            console.log(res.data.data)
-          })
-    },
-    getTest(){
-      JSON.stringify(store.dispatch('auth/getTest'))
+      store.dispatch('auth/getUsers')
     }
   }
 }
