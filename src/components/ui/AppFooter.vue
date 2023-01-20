@@ -4,7 +4,7 @@
 			{{ test }}
 		</div>
 		<hr>
-		<div class="card" v-for="user in users" :key="user.id">
+		<div v-if="users.length != 0" class="card" v-for="user in users" :key="user.id">
 			<div class="card">
 				<ul>
 					<li>Name: {{ user.Phone }}</li>
@@ -14,7 +14,9 @@
 				</ul>
 			</div>
 		</div>
-		<button class="btn danger" @click="getUsers">Load</button>
+    <div v-else class="card">
+      <h4>Данные отсутствуют так как список пользователей доступен лишь для администратора</h4>
+    </div>
 	</div>
 </template>
 
