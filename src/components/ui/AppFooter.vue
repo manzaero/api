@@ -10,6 +10,7 @@
 					<li>Name: {{ user.Phone }}</li>
 					<li>Username: {{ user.FirstName }}</li>
 					<li>E-mail: {{ user.Email }}</li>
+					<li>Role: {{ user.Role }}</li>
 				</ul>
 			</div>
 		</div>
@@ -18,8 +19,7 @@
 </template>
 
 <script>
-import axios from "axios";
-import store from "@/store";
+import {getUsers} from "@/use/get-users";
 
 export default {
   props:{
@@ -28,15 +28,8 @@ export default {
       required: true
     }
   },
-  data(){
-    return {
-      users: null
-    }
-  },
-  methods:{
-    getUsers(){
-      store.dispatch('auth/getUsers')
-    }
+  setup(){
+    return {...getUsers()}
   }
 }
 </script>

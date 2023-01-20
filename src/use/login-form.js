@@ -25,7 +25,6 @@ export function useLoginForm(){
             .min(6, 'Не менее 6 символов')
     );
     const onSubmit = handleSubmit(async values => {
-        console.log('From', values)
         try {
             await store.dispatch('auth/login', values)
             await router.push('/')
