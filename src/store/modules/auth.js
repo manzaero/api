@@ -39,7 +39,6 @@ export default {
         async register({commit}, payload){
             try {
                 const regToken = axios.post(`${API_URL}/auth/register`, payload)
-                console.log()
             }catch (e) {
                 console.dir(e)
             }
