@@ -29,7 +29,7 @@ export function useLoginForm(){
             await store.dispatch('auth/login', values)
             await router.push('/')
         } catch (e) {
-            console.log(e.message())
+            console.log(e.message)
         }
     });
 
