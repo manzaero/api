@@ -25,7 +25,6 @@ export default {
             try {
                 const apiToken = await axios.post(`${API_URL}/auth/login`, payload)
                 commit('setToken', JSON.stringify(apiToken.data.access_token))
-                console.log('Вошёл')
                 commit('clearMessage', null, {root: true})
             } catch (e) {
                 dispatch('setMessage', {
@@ -38,11 +37,10 @@ export default {
         },
         async register({commit}, payload){
             try {
-                const regToken = axios.post(`${API_URL}/auth/register`, payload)
+                await axios.post(`${API_URL}/auth/register`)
             }catch (e) {
                 console.dir(e)
             }
-            // commit('setToken', 'TEST TOKEN')
         },
         async getUsers({commit, dispatch}){
             await axios.get(`${API_URL}/users`, {

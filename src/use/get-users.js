@@ -1,16 +1,17 @@
-import axios from "axios";
 import {ref} from "vue";
+import store from "@/store";
 
 export function getUsers() {
-    const getUsers = axios.get('https://test.octopus.uz/api/v1/users', {
-        headers: {
-            'Authorization': `bearer ` + JSON.parse(localStorage.getItem('jwt-token'))
-        }
-    })
-        .then(res => {
-            users.value = res.data.data
-        })
     let users = ref('')
+
+    const getUsers = async () => {
+        await store.dispatch("auth/getUsers")
+            .then(res => {
+                users.value = res.data.data
+                console.log(res)
+            })
+    }
+
     return {
         users,
         getUsers
