@@ -33,7 +33,7 @@ export default {
                     type: 'danger'
                 }, {root: true})
                 console.log(error(e.message))
-                throw new Error()
+                throw new Error(e)
             }
         },
         async register({commit}, payload){
