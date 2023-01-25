@@ -21,8 +21,8 @@ export default {
             state.token = null
             localStorage.removeItem(JWT_TOKEN)
         },
-        updateUsers(){
-            state,
+        updateUsers(state, users){
+            state.users = users
         }
     },
     actions:{
@@ -47,12 +47,20 @@ export default {
                 console.dir(e)
             }
         },
-        async getUsers(){
+        async getUsers(ctx){
             try {
-                const users = axios.get(`${API_URL}/users`)
-
+                await axios.get(`${API_URL}/users?page=1`, {
+                    headers: {
+                        'Authorization': `bearer ` + JSON.parse(localStorage.getItem(JWT_TOKEN))
+                    }
+                })
+                    .then(usersApi => {
+                        let users;
+                        users = usersApi.data.data
+                        ctx.commit('updateUsers', users)
+                    })
             } catch (e) {
-                
+                console.log(e.message)
             }
         }
     },
@@ -63,7 +71,7 @@ export default {
         isAuth(_, getters){
             return !!getters.token
         },
-         getUsers(state){
+         users(state){
             return state.users
         }
     }
