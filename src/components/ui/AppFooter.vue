@@ -4,7 +4,10 @@
 			{{ test }}
 		</div>
 		<hr>
-		<div class="card" v-for="user in users" :key="user">
+    <div v-if="users.length === 0" class="card">
+      <h4>Не постаточно прав для просмотра списка пользователей</h4>
+    </div>
+		<div v-else class="card" v-for="user in users" :key="user">
 				<ul>
 					<li>Phone: {{ user.Phone }}</li>
 					<li>Username: {{ user.FirstName }}</li>
@@ -12,6 +15,7 @@
 					<li>Role: {{ user.Role }}</li>
 				</ul>
 		</div>
+    <button class="btn primary" @click="getUsers">Load</button>
   </div>
 </template>
 

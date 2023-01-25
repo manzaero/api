@@ -57,6 +57,16 @@ export function useRegForm(){
         // .oneOf(yup.ref('Password'))
     )
 
+    const regSubmit = handleSubmit(async values => {
+        console.log('Reg forms', values);
+        try {
+            await store.dispatch('auth/register', values);
+            await router.push('/auth')
+        } catch (e) {
+            console.log(e)
+        }
+    })
+
     const isToMany = computed(() => submitCount.value >= 1)
 
     watch(isToMany, value => {
@@ -65,13 +75,7 @@ export function useRegForm(){
         }
     })
 
-    const regSubmit = handleSubmit(async values => {
-        console.log('Reg forms', values);
-        await store.dispatch('auth/register', values);
-        router.push('/auth')
-    })
 
-    console.log([yup.ref('Password')])
 
     return {
         isToMany,

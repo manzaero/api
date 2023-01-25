@@ -1,6 +1,5 @@
 import axios, {get} from "axios";
 import {error} from "@/utils/error";
-import {ref} from "vue";
 const JWT_TOKEN = 'jwt-token'
 const API_URL = `https://test.octopus.uz/api/v1`
 
@@ -8,7 +7,7 @@ export default {
     namespaced: true,
     state(){
         return {
-            users: null,
+            users: [],
             token: localStorage.getItem(JWT_TOKEN)
         }
     },
@@ -37,19 +36,25 @@ export default {
                     type: 'danger'
                 }, {root: true})
                 console.log(error(e.message))
+                console.dir(e)
                 throw new Error(e)
             }
         },
-        async register({commit}, payload){
+        async register({commit, dispatch}, payload){
             try {
-                await axios.post(`${API_URL}/auth/register`)
+                await axios.post(`${API_URL}/auth/register`, payload)
             }catch (e) {
-                console.dir(e)
+                dispatch('setMessage', {
+                    value: error(e.message),
+                    type: 'danger'
+                }, {root: true})
+                console.log(error(e.message))
+                throw new Error(e)
             }
         },
         async getUsers(ctx){
             try {
-                await axios.get(`${API_URL}/users?page=1`, {
+                await axios.get(`${API_URL}/users?page=`, {
                     headers: {
                         'Authorization': `bearer ` + JSON.parse(localStorage.getItem(JWT_TOKEN))
                     }
