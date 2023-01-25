@@ -1,5 +1,6 @@
-import axios from "axios";
+import axios, {get} from "axios";
 import {error} from "@/utils/error";
+import {ref} from "vue";
 const JWT_TOKEN = 'jwt-token'
 const API_URL = `https://test.octopus.uz/api/v1`
 
@@ -7,6 +8,7 @@ export default {
     namespaced: true,
     state(){
         return {
+            users: null,
             token: localStorage.getItem(JWT_TOKEN)
         }
     },
@@ -18,6 +20,9 @@ export default {
         logout(state){
             state.token = null
             localStorage.removeItem(JWT_TOKEN)
+        },
+        updateUsers(){
+            state,
         }
     },
     actions:{
@@ -42,12 +47,13 @@ export default {
                 console.dir(e)
             }
         },
-        async getUsers({commit, dispatch}){
-            await axios.get(`${API_URL}/users`, {
-                headers: {
-                    'Authorization': `bearer ` + JSON.parse(localStorage.getItem(JWT_TOKEN))
+        async getUsers(){
+            try {
+                const users = axios.get(`${API_URL}/users`)
+
+            } catch (e) {
+                
             }
-            })
         }
     },
     getters:{
@@ -56,6 +62,9 @@ export default {
         },
         isAuth(_, getters){
             return !!getters.token
+        },
+         getUsers(state){
+            return state.users
         }
     }
 }

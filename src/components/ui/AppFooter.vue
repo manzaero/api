@@ -4,23 +4,20 @@
 			{{ test }}
 		</div>
 		<hr>
-    <button class="btn warning" @click="getUsers">Load</button>
-		<div class="card" v-for="user in users" :key="user.id">
-			<div class="card">
+		<div class="card" v-for="user in getUsers" :key="user">
 				<ul>
-					<li>Name: {{ user.Phone }}</li>
+					<li>Phone: {{ user.Phone }}</li>
 					<li>Username: {{ user.FirstName }}</li>
 					<li>E-mail: {{ user.Email }}</li>
 					<li>Role: {{ user.Role }}</li>
 				</ul>
-        <button class="btn warning" @click="getUsers">Load</button>
-			</div>
 		</div>
-	</div>
+  </div>
 </template>
 
 <script>
-import {getUsers} from "@/use/get-users";
+
+import {mapGetters} from 'vuex'
 
 export default {
   props:{
@@ -29,8 +26,13 @@ export default {
       required: true
     }
   },
+  // computed: {
+  //   users(){
+  //     return this.$store.getters.users
+  //   }
+  // },
+  computed: mapGetters({getUsers: 'auth/getUsers'}),
   setup(){
-    return {...getUsers()}
   }
 }
 </script>
