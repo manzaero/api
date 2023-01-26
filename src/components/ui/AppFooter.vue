@@ -15,7 +15,6 @@
 					<li>Role: {{ user.Role }}</li>
 				</ul>
 		</div>
-    <button class="btn primary" @click="getUsers">Load</button>
   </div>
 </template>
 
@@ -33,7 +32,8 @@ export default {
   computed: mapGetters({users: 'auth/users'}),
   methods: mapActions({getUsers: "auth/getUsers"}),
   async mounted(){
-    await this.getUsers()
+    await this.getUsers(2)
+
   },
   setup(){
   }

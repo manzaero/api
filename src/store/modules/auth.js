@@ -52,9 +52,9 @@ export default {
                 throw new Error(e)
             }
         },
-        async getUsers(ctx){
+        async getUsers(ctx, page = 1){
             try {
-                await axios.get(`${API_URL}/users?page=`, {
+                await axios.get(`${API_URL}/users?page=` + page, {
                     headers: {
                         'Authorization': `bearer ` + JSON.parse(localStorage.getItem(JWT_TOKEN))
                     }

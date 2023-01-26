@@ -6,7 +6,7 @@
         <router-link to="/">Список</router-link>
       </li>
       <li>
-        <router-link to="/help">test</router-link>
+        <router-link to="/users">Пользователи</router-link>
       </li>
       <li>
         <a href="#">test</a>
