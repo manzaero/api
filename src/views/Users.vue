@@ -41,9 +41,9 @@
         <small v-if="pcError">{{pcError}}</small>
       </div>
 
-      <button class="btn primary" type="submit" :disabled="isSubmitting || isToMany">Зарегестрироваться</button>
+      <button class="btn primary" type="submit" :disabled="isSubmitting || isToMany">Добавить</button>
       <button class="btn" type="reset">Очистить форму</button>
-      <div class="text-danger" v-if="isToMany">Не так быстро!</div>
+      <div class="text-danger" v-if="isToMany">Не спеши!</div>
     </form>
   </div>
 </template>
@@ -51,7 +51,7 @@
 <script>
 export default {
   setup(){
-    // return {...useCreateForm()}
+
   }
 }
 </script>
