@@ -14,6 +14,7 @@
 					<li>E-mail: {{ user.Email }}</li>
 					<li>Role: {{ user.Role }}</li>
 				</ul>
+      <button class="btn warning">delete</button>
 		</div>
   </div>
 </template>
@@ -32,7 +33,7 @@ export default {
   computed: mapGetters({users: 'auth/users'}),
   methods: mapActions({getUsers: "auth/getUsers"}),
   async mounted(){
-    await this.getUsers(2)
+    await this.getUsers(3)
 
   },
   setup(){

@@ -1,27 +1,29 @@
 import {useStore} from "vuex";
 import {useRouter} from "vue-router/dist/vue-router";
-import {useField} from "vee-validate";
+import {useField, useForm} from "vee-validate";
 import * as yup from "yup";
+import {computed, watch} from "vue";
 
 export function useCreateForm(){
     const store = useStore()
     const router = useRouter()
+    const {handleSubmit,isSubmitting, submitCount} = useForm()
 
-    const {value: fName, errorMessage: fnError, handleBlur: fnBlur} = useField(
+    const {value: FirstName, errorMessage: fnError, handleBlur: fnBlur} = useField(
         'FirstName',
         yup
             .string()
             .trim()
             .required('Поле обязательно')
     )
-    const {value: lName, errorMessage: lnError, handleBlur: lnBlur} = useField(
+    const {value: LastName, errorMessage: lnError, handleBlur: lnBlur} = useField(
         'LastName',
         yup
             .string()
             .trim()
             .required('Поле обязательно')
     )
-    const {value: eMail, errorMessage: eError, handleBlur: eBlur} = useField(
+    const {value: Email, errorMessage: eError, handleBlur: eBlur} = useField(
         'Email',
         yup
             .string()
@@ -29,7 +31,7 @@ export function useCreateForm(){
             .required('Поле обязательно')
             .email('Введи почту')
     )
-    const {value: pHone, errorMessage: phError, handleBlur: phBlur} = useField(
+    const {value: Phone, errorMessage: phError, handleBlur: phBlur} = useField(
         'Phone',
         yup
             .string()
@@ -53,4 +55,43 @@ export function useCreateForm(){
             .min(6, `Не менее 6 символов и повторите пароль!`)
         // .oneOf(yup.ref('Password'))
     )
+
+    const createUser = handleSubmit(async values =>{
+        await store.dispatch("auth/register", values)
+        await alert('Удачное создание юзверя')
+        await router.push('/')
+    })
+
+    const isMany = computed(() => submitCount >= 1)
+
+    watch(isMany, values => {
+        if (values) {
+            setTimeout(() => {submitCount.value = 0}, 3000)
+        }
+    })
+
+    return {
+        isMany,
+        isSubmitting,
+        createUser,
+        Password_confirmation,
+        pcError,
+        pcBlur,
+        FirstName,
+        fnError,
+        fnBlur,
+        LastName,
+        lnError,
+        lnBlur,
+        Email,
+        eError,
+        eBlur,
+        Phone,
+        Password,
+        phError,
+        pError,
+        phBlur,
+        pBlur
+    }
+
 }

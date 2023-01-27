@@ -5,11 +5,11 @@
     </template>
     <request-table :requests="[]"></request-table>
 
-    <teleport to="body">
-      <app-modal v-if="modal" title="Создать" @close="modal = false">
-        <request-modal/>
-      </app-modal>
-    </teleport>
+<!--    <teleport to="body">-->
+<!--      <app-modal v-if="modal" title="Создать" @close="modal = false">-->
+<!--        <request-modal/>-->
+<!--      </app-modal>-->
+<!--    </teleport>-->
   </app-page>
 
   <app-footer test="Users">

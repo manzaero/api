@@ -1,6 +1,5 @@
 <template>
-  <div class="card">
-    <form class="card" @submit.prevent="regSubmit">
+    <form class="card w-4" @submit.prevent="createUser">
       <h1>Создать пользователя</h1>
 
       <div :class="['form-control', {invalid:fnError}]">
@@ -41,17 +40,24 @@
         <small v-if="pcError">{{pcError}}</small>
       </div>
 
-      <button class="btn primary" type="submit" :disabled="isSubmitting || isToMany">Добавить</button>
-      <button class="btn" type="reset">Очистить форму</button>
-      <div class="text-danger" v-if="isToMany">Не спеши!</div>
+      <button class="btn primary" type="submit" :disabled="isSubmitting || isMany">Добавить</button>
+      <div class="text-danger" v-if="isMany">Не спеши!</div>
     </form>
-  </div>
 </template>
 
 <script>
+import {useCreateForm} from "@/use/create-form";
+
 export default {
   setup(){
-
+    return {...useCreateForm()}
   }
 }
 </script>
+
+<style scoped>
+.w-4{
+  width: 400px;
+  margin: 0 auto;
+}
+</style>

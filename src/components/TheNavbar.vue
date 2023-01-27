@@ -9,7 +9,7 @@
         <router-link to="/users">Пользователи</router-link>
       </li>
       <li>
-        <a href="#">test</a>
+        <a href="#">тест</a>
       </li>
       <li>
         <a href="" @click.prevent="logout">Выход</a>

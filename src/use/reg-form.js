@@ -58,7 +58,6 @@ export function useRegForm(){
     )
 
     const regSubmit = handleSubmit(async values => {
-        console.log('Reg forms', values);
         try {
             await store.dispatch('auth/register', values);
             await router.push('/auth')
