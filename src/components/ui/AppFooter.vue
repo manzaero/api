@@ -16,12 +16,17 @@
 				</ul>
       <button class="btn warning">delete</button>
 		</div>
+    <div class="card flex-row">
+      <button class="btn danger">prev</button>
+      <button class="btn danger">next</button>
+    </div>
   </div>
 </template>
 
 <script>
 
 import {mapGetters, mapActions} from 'vuex'
+import {ref} from "vue";
 
 export default {
   props:{
@@ -32,14 +37,21 @@ export default {
   },
   computed: mapGetters({users: 'auth/users'}),
   methods: mapActions({getUsers: "auth/getUsers"}),
-  async mounted(){
-    await this.getUsers(3)
+  data(){
+    return {
+      page: 2,
+      total: 0
+    }
   },
-  setup(){
+  async mounted(){
+    await this.getUsers(this.page)
   }
 }
 </script>
 
 <style scoped>
-
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+}
 </style>
