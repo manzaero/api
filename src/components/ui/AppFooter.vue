@@ -34,7 +34,6 @@ export default {
   methods: mapActions({getUsers: "auth/getUsers"}),
   async mounted(){
     await this.getUsers(3)
-
   },
   setup(){
   }
