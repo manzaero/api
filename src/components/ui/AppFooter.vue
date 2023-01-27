@@ -18,7 +18,7 @@
 		</div>
     <div class="card flex-row">
       <button class="btn danger">prev</button>
-      <button class="btn danger">next</button>
+      <button class="btn danger" @click="">next</button>
     </div>
   </div>
 </template>
@@ -45,7 +45,8 @@ export default {
   },
   async mounted(){
     await this.getUsers(this.page)
-  }
+  },
+
 }
 </script>
 
