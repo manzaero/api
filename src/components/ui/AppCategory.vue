@@ -8,7 +8,7 @@
     <p>Name: {{category.Name}}</p>
     <p>Product has: {{category.HasProduct}}</p>
   </div>
-    <button class="btn primary" @click="clickCat">+++</button>
+    <button class="btn primary" @click="clickCat">Загрузить</button>
   </div>
 </template>
 
