@@ -4,11 +4,11 @@
       {{category}}
     </div>
     <hr>
-  <div class="card" v-for="category in categories" :key="categories.id">
+  <div v-if="categories" class="card" v-for="category in categories" :key="categories.id">
     <p>Name: {{category.Name}}</p>
     <p>Product has: {{category.HasProduct}}</p>
   </div>
-    <button class="btn primary" @click="clickCat">Загрузить</button>
+    <button v-else class="btn primary" @click="clickCat">Загрузить</button>
   </div>
 </template>
 
@@ -24,7 +24,7 @@ export default {
   data(){
     return {
       categories: null,
-      pages: 1
+      pages: 1,
     }
   },
   methods:{
@@ -36,13 +36,13 @@ export default {
       })
           .then(res => {
             this.categories = res.data.data
+            console.log(this.categories)
           })
     }
   },
   computed:{
     clickCat(){
       this.categories = this.getCat()
-      console.log(this.categories)
     }
   },
   async mounted(){
