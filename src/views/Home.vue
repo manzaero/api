@@ -12,17 +12,13 @@
     </teleport>
   </app-page>
 
-  <app-footer test="Users">
 
-
-  </app-footer>
 
 </template>
 
 <script>
 import {ref} from 'vue'
 import AppPage from "@/components/ui/AppPage";
-import AppFooter from "@/components/ui/AppFooter";
 import RequestTable from "@/components/request/RequestTable";
 import AppModal from "@/components/ui/AppModal";
 import RequestModal from "@/components/request/RequestModal";
@@ -34,6 +30,6 @@ export default {
       modal
     }
   },
-  components:{AppPage, AppFooter, RequestTable, AppModal, RequestModal}
+  components:{AppPage, RequestTable, AppModal, RequestModal}
 }
 </script>
