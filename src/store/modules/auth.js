@@ -53,9 +53,8 @@ export default {
             }
         },
         async getUsers(ctx, pageNumber){
-            let pageNext = pageNumber++
             try {
-                await axios.get(`${API_URL}/users?page=${pageNext}`, {
+                await axios.get(`${API_URL}/users?page=${pageNumber}`, {
                     headers: {
                         'Authorization': `bearer ` + JSON.parse(localStorage.getItem(JWT_TOKEN))
                     }

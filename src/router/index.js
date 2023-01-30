@@ -13,6 +13,15 @@ const routes = [
     }
   },
   {
+    path: '/categories',
+    name: 'Categories',
+    component: () => import('../views/Category'),
+    meta: {
+      layout: 'main',
+      auth: true
+    }
+  },
+  {
     path: '/users',
     name: 'Users',
     component: () => import('../views/Users.vue'),
