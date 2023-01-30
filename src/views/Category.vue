@@ -1,5 +1,4 @@
 <template>
-<h4>Category</h4>
   <app-footer test="Users">
 
 

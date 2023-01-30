@@ -12,12 +12,15 @@
     </teleport>
   </app-page>
 
+  <app-category category="Category">
 
+  </app-category>
 
 </template>
 
 <script>
 import {ref} from 'vue'
+import AppCategory from "@/components/ui/AppCategory";
 import AppPage from "@/components/ui/AppPage";
 import RequestTable from "@/components/request/RequestTable";
 import AppModal from "@/components/ui/AppModal";
@@ -30,6 +33,6 @@ export default {
       modal
     }
   },
-  components:{AppPage, RequestTable, AppModal, RequestModal}
+  components:{AppPage, AppCategory, RequestTable, AppModal, RequestModal}
 }
 </script>

@@ -8,6 +8,7 @@ export default {
     state(){
         return {
             users: [],
+            categories:[],
             token: localStorage.getItem(JWT_TOKEN)
         }
     },
@@ -22,6 +23,9 @@ export default {
         },
         updateUsers(state, users){
             state.users = users
+        },
+        setCategory(state, category){
+            state.categories = category
         }
     },
     actions:{
@@ -52,7 +56,7 @@ export default {
                 throw new Error(e)
             }
         },
-        async getUsers(ctx, pageNumber){
+        async getUsers({commit}, pageNumber){
             try {
                 await axios.get(`${API_URL}/users?page=${pageNumber}`, {
                     headers: {
@@ -62,12 +66,19 @@ export default {
                     .then(usersApi => {
                         let users;
                         users = usersApi.data.data
-                        ctx.commit('updateUsers', users)
+                        commit('updateUsers', users)
                     })
             } catch (e) {
                 console.log(e.message)
             }
-        }
+        },
+        // async getCatFromApi({commit}){
+        //     await axios.get(`https://jsonplaceholder.typicode.com/users`)
+        //         .then(res => {
+        //             commit('setCategory', res.data)
+        //         })
+        //         .then(json => console.log(json))
+        // }
     },
     getters:{
         token(state){
@@ -78,6 +89,9 @@ export default {
         },
          users(state){
             return state.users
+        },
+        categories(state){
+            return state.categories
         }
     }
 }
