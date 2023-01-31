@@ -8,7 +8,7 @@ export default {
     state(){
         return {
             users: [],
-            categories:[],
+            categories:null,
             token: localStorage.getItem(JWT_TOKEN)
         }
     },
@@ -24,8 +24,8 @@ export default {
         updateUsers(state, users){
             state.users = users
         },
-        setCategory(state, category){
-            state.categories = category
+        updateCategory(state, catApi){
+            state.categories = catApi
         }
     },
     actions:{
@@ -64,21 +64,29 @@ export default {
                     }
                 })
                     .then(usersApi => {
-                        let users;
-                        users = usersApi.data.data
+                        let users = usersApi.data.data
                         commit('updateUsers', users)
                     })
             } catch (e) {
                 console.log(e.message)
             }
         },
-        // async getCatFromApi({commit}){
-        //     await axios.get(`https://jsonplaceholder.typicode.com/users`)
-        //         .then(res => {
-        //             commit('setCategory', res.data)
-        //         })
-        //         .then(json => console.log(json))
-        // }
+        async getCat({commit}){
+            try {
+                await axios.get('https://test.octopus.uz/api/v1/category',{
+                    headers:{
+                        'Authorization': `bearer ` + JSON.parse(localStorage.getItem(JWT_TOKEN))
+                    }
+                })
+                    .then(getCatFromApi => {
+                        let catApi = getCatFromApi.data.data;
+                        commit('updateCategory', catApi);
+                        console.log(catApi)
+                    })
+            } catch (e) {
+                console.log(e)
+            }
+        }
     },
     getters:{
         token(state){

@@ -8,12 +8,13 @@
     <p>Name: {{category.Name}}</p>
     <p>Product has: {{category.HasProduct}}</p>
   </div>
-    <button v-else class="btn primary" @click="clickCat">Загрузить</button>
+    <button v-else class="btn primary" @click="getCategory">Загрузить</button>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import {mapGetters} from "vuex";
 export default {
   props:{
     category:{
@@ -21,32 +22,17 @@ export default {
       require: true
     }
   },
-  data(){
+  setup(){
     return {
-      categories: null,
-      pages: 1,
-    }
-  },
-  methods:{
-    async getCat(){
-      await axios.get('https://test.octopus.uz/api/v1/category',{
-        headers:{
-          'Authorization': `bearer ` + JSON.parse(localStorage.getItem('jwt-token'))
-        }
-      })
-          .then(res => {
-            this.categories = res.data.data
-            console.log(this.categories)
-          })
+      getCategory: () => {
+        state.commit('updateCategory')
+      }
     }
   },
   computed:{
-    clickCat(){
-      this.categories = this.getCat()
+    categories(){
+      return this.$store.getters.categories
     }
-  },
-  async mounted(){
-
   },
   name: "AppCategory"
 }
