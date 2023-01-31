@@ -7,8 +7,8 @@ export default {
     namespaced: true,
     state(){
         return {
-            users: [],
             categories:null,
+            users: [],
             token: localStorage.getItem(JWT_TOKEN)
         }
     },
@@ -23,9 +23,6 @@ export default {
         },
         updateUsers(state, users){
             state.users = users
-        },
-        updateCategory(state, catApi){
-            state.categories = catApi
         }
     },
     actions:{
@@ -71,22 +68,6 @@ export default {
                 console.log(e.message)
             }
         },
-        async getCat({commit}){
-            try {
-                await axios.get('https://test.octopus.uz/api/v1/category',{
-                    headers:{
-                        'Authorization': `bearer ` + JSON.parse(localStorage.getItem(JWT_TOKEN))
-                    }
-                })
-                    .then(getCatFromApi => {
-                        let catApi = getCatFromApi.data.data;
-                        commit('updateCategory', catApi);
-                        console.log(catApi)
-                    })
-            } catch (e) {
-                console.log(e)
-            }
-        }
     },
     getters:{
         token(state){
@@ -98,8 +79,5 @@ export default {
          users(state){
             return state.users
         },
-        categories(state){
-            return state.categories
-        }
     }
 }
