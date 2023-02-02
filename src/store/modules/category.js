@@ -4,9 +4,7 @@ export default  {
     namespaced: true,
     state(){
         return {
-            categories: {
-                Name: 1
-            }
+            categories: null,
         }
     },
     getters:{
@@ -15,8 +13,8 @@ export default  {
         }
     },
     mutations:{
-        loadCat(getters, cat){
-            getters.categories = cat
+        loadCat(state, cat){
+            state.categories = cat
         }
     },
     actions:{
@@ -29,6 +27,7 @@ export default  {
                 .then(res => {
                     let cat = res.data.data
                     commit('loadCat', cat)
+                    console.log(cat)
                 })
         }
     }
