@@ -13,18 +13,18 @@ const routes = [
     }
   },
   {
-    path: '/categories',
-    name: 'Categories',
-    component: () => import('../views/Category'),
+    path: '/users',
+    name: 'Users',
+    component: () => import('../views/Users'),
     meta: {
       layout: 'main',
       auth: true
     }
   },
   {
-    path: '/users',
-    name: 'Users',
-    component: () => import('../views/Users.vue'),
+    path: '/add',
+    name: 'Adding',
+    component: () => import('../views/Adding.vue'),
     meta: {
       layout: 'main',
       auth: true

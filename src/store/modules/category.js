@@ -25,9 +25,11 @@ export default  {
                 }
             })
                 .then(res => {
-                    let cat = res.data.data
-                    commit('loadCat', cat)
-                    console.log(cat)
+                    let cat = res.data.data;
+                    let links = res.data.links;
+                    commit('loadCat', cat);
+                    console.log(cat);
+                    console.log(links.first)
                 })
         }
     }

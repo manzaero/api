@@ -6,10 +6,10 @@
         <router-link to="/">Категории</router-link>
       </li>
       <li>
-        <router-link to="/users">Добавить</router-link>
+        <router-link to="/add">Добавить</router-link>
       </li>
       <li>
-        <router-link to="/categories">Пользователи</router-link>
+        <router-link to="/users">Пользователи</router-link>
       </li>
       <li>
         <a href="#">тест</a>
