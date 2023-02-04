@@ -6,13 +6,13 @@
     </div>
 
     <div class="form-control">
-      <label for="name">Телефон</label>
-      <input type="text" id="name">
+      <label for="phone">Телефон</label>
+      <input type="text" id="phone">
     </div>
 
     <div class="form-control">
-      <label for="name">Сумма</label>
-      <input type="text" id="name">
+      <label for="amount">Сумма</label>
+      <input type="number" id="amount">
     </div>
 
     <div class="form-control">

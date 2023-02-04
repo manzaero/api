@@ -13,8 +13,8 @@ export default  {
         }
     },
     mutations:{
-        loadCat(state, cat){
-            state.categories = cat
+        loadCat(getters, cat){
+            getters.categories = cat
         }
     },
     actions:{

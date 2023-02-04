@@ -1,6 +1,6 @@
 <template>
     <form class="card w-4" @submit.prevent="createUser">
-      <h1>Создать пользователя</h1>
+      <h1>Добавить пользователя</h1>
 
       <div :class="['form-control', {invalid:fnError}]">
         <label for="FirstName">Имя</label>

@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import {mapActions, mapGetters, mapMutations, mapState} from "vuex";
+import {mapGetters} from "vuex";
 export default {
   props:{
     category:{

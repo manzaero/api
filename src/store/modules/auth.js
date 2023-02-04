@@ -61,13 +61,15 @@ export default {
                     }
                 })
                     .then(usersApi => {
-                        let users = usersApi.data.data
-                        commit('updateUsers', users)
+                        let users = usersApi.data.data;
+                        let links = usersApi.data.links;
+                        commit('updateUsers', users);
+                        console.log(links)
                     })
             } catch (e) {
                 console.log(e.message)
             }
-        },
+        }
     },
     getters:{
         token(state){
