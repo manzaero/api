@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 export default {
   props:{
     category:{
@@ -24,11 +24,9 @@ export default {
   computed: mapGetters(
       {categories:'category/categories'}
   ),
-  methods:{
-    getCategory(){
-      this.$store.dispatch('category/getCategory')
-    }
-  },
+  methods:mapActions(
+      {getCategory: 'category/getCategory'}
+  ),
   name: "AppCategory"
 }
 </script>
