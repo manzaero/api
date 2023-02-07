@@ -7,7 +7,6 @@ export default {
     namespaced: true,
     state(){
         return {
-            categories:null,
             users: [],
             token: localStorage.getItem(JWT_TOKEN)
         }
@@ -20,9 +19,6 @@ export default {
         logout(state){
             state.token = null
             localStorage.removeItem(JWT_TOKEN)
-        },
-        updateUsers(state, users){
-            state.users = users
         }
     },
     actions:{
@@ -52,23 +48,6 @@ export default {
                 console.log(error(e.message))
                 throw new Error(e)
             }
-        },
-        async getUsers({commit}, pageNumber){
-            try {
-                await axios.get(`${API_URL}/users?page=${pageNumber}`, {
-                    headers: {
-                        'Authorization': `bearer ` + JSON.parse(localStorage.getItem(JWT_TOKEN))
-                    }
-                })
-                    .then(usersApi => {
-                        let users = usersApi.data.data;
-                        let links = usersApi.data.links;
-                        commit('updateUsers', users);
-                        console.log(links)
-                    })
-            } catch (e) {
-                console.log(e.message)
-            }
         }
     },
     getters:{
@@ -77,9 +56,6 @@ export default {
         },
         isAuth(_, getters){
             return !!getters.token
-        },
-         users(state){
-            return state.users
-        },
+        }
     }
 }
