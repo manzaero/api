@@ -1,5 +1,5 @@
 <template>
-  <app-footer test="Users">
+  <app-footer title="Users">
 
 
   </app-footer>

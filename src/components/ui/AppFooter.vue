@@ -1,7 +1,7 @@
 <template>
 	<div class="card">
 		<div class="card-title">
-			{{ test }}
+			{{ title }}
 		</div>
 		<hr>
     <div v-if="users.length === 0" class="card">
@@ -29,7 +29,7 @@ import {mapGetters, mapActions} from 'vuex'
 
 export default {
   props:{
-    test:{
+    title:{
       type: String,
       required: true
     }

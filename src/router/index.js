@@ -40,6 +40,15 @@ const routes = [
     }
   },
   {
+    path: '/list',
+    name: 'List',
+    component: () => import('../views/List.'),
+    meta: {
+      layout: 'main',
+      auth: true
+    }
+  },
+  {
     path: '/reg',
     name: 'Reg',
     component: () => import('../views/Reg'),

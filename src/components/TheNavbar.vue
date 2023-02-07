@@ -12,7 +12,7 @@
         <router-link to="/users">Пользователи</router-link>
       </li>
       <li>
-        <a href="#">тест</a>
+        <router-link to="/list">Лист</router-link>
       </li>
       <li>
         <a href="" @click.prevent="logout">Выход</a>
