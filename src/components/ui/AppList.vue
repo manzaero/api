@@ -1,10 +1,10 @@
 <template>
   <div class="card">
-    <div class="card-title">
+    <div class="title">
       {{title}}
     </div>
-    <div v-if="lists" class="card" v-for="list in lists" :key="id">
-      <p>{{list.Name}}</p>
+    <div v-if="lists" class="card" v-for="list in lists" :key="lists.id">
+      <p>Name: {{list}}</p>
     </div>
     <hr>
     <button class="btn primary" @click="getList">Load</button>
@@ -13,15 +13,19 @@
 
 <script>
 import {mapActions, mapGetters} from "vuex";
-
 export default {
   props:{
     title:{
       type: String,
-      required: true
+      require: true
     }
   },
-  computed: mapGetters({lists: 'list/getList'}),
+  computed:{
+    lists(){
+      return this.$store.state.list
+    }
+  },
+  // computed: mapGetters({lists: 'list/getList'}),
   methods: mapActions({getList: 'list/getListApi'}),
   name: "AppList"
 }

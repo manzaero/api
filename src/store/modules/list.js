@@ -1,34 +1,33 @@
 import axios from "axios";
-import list from "@/views/List.";
-
+const API_URL = `https://test.octopus.uz/api/v1`
 export default {
     namespaced: true,
-    setup(){
+    state(){
         return {
-            list: []
+            list: null
         }
     },
     getters:{
         getList(state){
-            return state.list
+            return state.list[1]
         }
     },
     mutations:{
-        loadList(getters, listLoad){
-            getters.getList = listLoad
+        loadList(getters, list){
+            getters.getList = list
         }
     },
     actions:{
         async getListApi({commit}){
-            await axios.get('https://test.octopus.uz/api/v1/category/list', {
+            await axios.get(`${API_URL}/category/list`, {
                 headers:{
                     'Authorization': `bearer ` + JSON.parse(localStorage.getItem('jwt-token'))
                 }
             })
-                .then(list => {
-                    let listLoad = list;
-                    commit('loadList', listLoad.data.data)
-                    console.log(listLoad.data.data)
+                .then(res => {
+                    let list = res.data.data[0];
+                    commit('loadList', list)
+                    console.log(list)
                 })
         }
     }

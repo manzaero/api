@@ -22,7 +22,7 @@ export default {
     }
   },
   computed: mapGetters({categories:'category/categories'}),
-  methods:mapActions({getCategory: 'category/getCategory'}),
+  methods: mapActions({getCategory: 'category/getCategory'}),
   name: "AppCategory"
 }
 </script>

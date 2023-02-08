@@ -1,6 +1,6 @@
 import axios from "axios";
 const API_URL = `https://test.octopus.uz/api/v1`
-export default  {
+export default {
     namespaced: true,
     state(){
         return {
@@ -26,10 +26,8 @@ export default  {
             })
                 .then(res => {
                     let cat = res.data.data;
-                    let links = res.data.links;
                     commit('loadCat', cat);
-                    console.log(cat);
-                    console.log(links.first)
+                    console.log(cat)
                 })
         }
     }
