@@ -21,12 +21,8 @@ export default {
       require: true
     }
   },
-  computed: mapGetters(
-      {categories:'category/categories'}
-  ),
-  methods:mapActions(
-      {getCategory: 'category/getCategory'}
-  ),
+  computed: mapGetters({categories:'category/categories'}),
+  methods:mapActions({getCategory: 'category/getCategory'}),
   name: "AppCategory"
 }
 </script>

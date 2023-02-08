@@ -1,4 +1,5 @@
 import axios from "axios";
+import list from "@/views/List.";
 
 export default {
     namespaced: true,
@@ -8,22 +9,27 @@ export default {
         }
     },
     getters:{
-        list(state){
+        getList(state){
             return state.list
         }
     },
     mutations:{
-        loadList(getters, list){
-            getters.list = list
+        loadList(getters, listLoad){
+            getters.getList = listLoad
         }
     },
     actions:{
-        async getList({commit}){
-            const list = axios.get('https://test.octopus.uz/api/v1/category/list', {
+        async getListApi({commit}){
+            await axios.get('https://test.octopus.uz/api/v1/category/list', {
                 headers:{
-                    'Authorization': `brear ` + JSON.parse(localStorage.getItem('jwt-token'))
+                    'Authorization': `bearer ` + JSON.parse(localStorage.getItem('jwt-token'))
                 }
             })
+                .then(list => {
+                    let listLoad = list;
+                    commit('loadList', listLoad.data.data)
+                    console.log(listLoad.data.data)
+                })
         }
     }
 }
