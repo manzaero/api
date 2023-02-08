@@ -9,7 +9,7 @@ export default {
     },
     getters:{
         getList(state){
-            return state.list[1]
+            return state.list
         }
     },
     mutations:{
@@ -25,7 +25,7 @@ export default {
                 }
             })
                 .then(res => {
-                    let list = res.data.data[0];
+                    let list = res.data.data;
                     commit('loadList', list)
                     console.log(list)
                 })

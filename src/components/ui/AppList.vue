@@ -20,12 +20,7 @@ export default {
       require: true
     }
   },
-  computed:{
-    lists(){
-      return this.$store.state.list
-    }
-  },
-  // computed: mapGetters({lists: 'list/getList'}),
+  computed: mapGetters({lists: 'list/getList'}),
   methods: mapActions({getList: 'list/getListApi'}),
   name: "AppList"
 }
