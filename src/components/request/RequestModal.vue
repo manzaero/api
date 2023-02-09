@@ -48,7 +48,3 @@ export default {
   name: "RequestModal"
 }
 </script>
-
-<style scoped>
-
-</style>

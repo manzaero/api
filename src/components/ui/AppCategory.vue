@@ -26,7 +26,3 @@ export default {
   name: "AppCategory"
 }
 </script>
-
-<style scoped>
-
-</style>

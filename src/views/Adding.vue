@@ -56,8 +56,5 @@ export default {
 </script>
 
 <style scoped>
-.w-4{
-  width: 400px;
-  margin: 0 auto;
-}
+
 </style>

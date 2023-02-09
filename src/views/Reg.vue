@@ -56,7 +56,3 @@ export default {
   name: "Auth"
 }
 </script>
-
-<style scoped>
-
-</style>

@@ -48,10 +48,3 @@ export default {
 
 }
 </script>
-
-<style scoped>
-.flex-row {
-  display: flex;
-  justify-content: space-between;
-}
-</style>

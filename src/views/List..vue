@@ -11,7 +11,3 @@ export default {
   components: {AppList}
 }
 </script>
-
-<style scoped>
-
-</style>

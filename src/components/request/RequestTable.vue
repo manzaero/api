@@ -29,7 +29,3 @@ export default {
   props:['requests']
 }
 </script>
-
-<style scoped>
-
-</style>

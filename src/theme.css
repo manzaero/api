@@ -17,6 +17,16 @@ hr {
 	margin: 1rem 0;
 }
 
+.w-4{
+	width: 400px;
+	margin: 0 auto;
+}
+
+.flex-row {
+	display: flex;
+	justify-content: space-between;
+}
+
 strong,
 .bold {
 	font-weight: 500;
