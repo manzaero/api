@@ -1,6 +1,5 @@
 import axios from "axios";
 const JWT_TOKEN = 'jwt-token';
-const API_URL = `https://test.octopus.uz/api/v1`
 
 export default {
     namespaced: true,
@@ -22,7 +21,7 @@ export default {
     actions:{
         async getUsers({commit}, pageNumber){
             try {
-                await axios.get(`${API_URL}/users?page=${pageNumber}`, {
+                await axios.get(`${process.env.API_URL}/users?page=${pageNumber}`, {
                     headers: {
                         'Authorization': `bearer ` + JSON.parse(localStorage.getItem(JWT_TOKEN))
                     }

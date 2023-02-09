@@ -3,11 +3,11 @@
     <div class="title">
       {{title}}
     </div>
-    <div v-if="lists" class="card" v-for="list in lists" :key="lists.id">
-      <p>Name: {{list}}</p>
-    </div>
     <hr>
-    <button class="btn primary" @click="getList">Load</button>
+    <div v-if="lists" class="card" v-for="list in lists">
+      <p>Name: {{list.Name}}</p>
+    </div>
+    <button v-else class="btn primary" @click="getList">Загрузить</button>
   </div>
 </template>
 
@@ -20,8 +20,8 @@ export default {
       require: true
     }
   },
-  computed: mapGetters({lists: 'list/getList'}),
-  methods: mapActions({getList: 'list/getListApi'}),
+  computed: mapGetters({lists: 'lists/getList'}),
+  methods: mapActions({getList: 'lists/getListApi'}),
   name: "AppList"
 }
 </script>

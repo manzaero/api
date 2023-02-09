@@ -1,4 +1,4 @@
-import axios, {get} from "axios";
+import axios from "axios";
 import {error} from "@/utils/error";
 const JWT_TOKEN = 'jwt-token'
 const API_URL = `https://test.octopus.uz/api/v1`
