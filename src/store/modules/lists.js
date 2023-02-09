@@ -1,5 +1,4 @@
 import axios from "axios";
-const API_URL = `https://test.octopus.uz/api/v1`
 export default {
     namespaced: true,
     state(){
@@ -19,7 +18,7 @@ export default {
     },
     actions:{
         async getListApi({commit}){
-            await axios.get(`${API_URL}/category/list`, {
+            await axios.get(`category/list`, {
                 headers:{
                     'Authorization': `bearer ` + JSON.parse(localStorage.getItem('jwt-token'))
                 }

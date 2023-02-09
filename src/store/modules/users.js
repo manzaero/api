@@ -21,7 +21,7 @@ export default {
     actions:{
         async getUsers({commit}, pageNumber){
             try {
-                await axios.get(`${process.env.API_URL}/users?page=${pageNumber}`, {
+                await axios.get(`users?page=${pageNumber}`, {
                     headers: {
                         'Authorization': `bearer ` + JSON.parse(localStorage.getItem(JWT_TOKEN))
                     }

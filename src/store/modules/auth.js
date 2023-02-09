@@ -1,7 +1,6 @@
-import axios from "axios";
+import axios, {get} from "axios";
 import {error} from "@/utils/error";
 const JWT_TOKEN = 'jwt-token'
-const API_URL = `https://test.octopus.uz/api/v1`
 
 export default {
     namespaced: true,
@@ -24,7 +23,7 @@ export default {
     actions:{
         async login({commit, dispatch}, payload){
             try {
-                const apiToken = await axios.post(`${API_URL}/auth/login`, payload)
+                const apiToken = await axios.post(`auth/login`, payload)
                 commit('setToken', JSON.stringify(apiToken.data.access_token))
                 commit('clearMessage', null, {root: true})
             } catch (e) {
@@ -39,7 +38,7 @@ export default {
         },
         async register({commit, dispatch}, payload){
             try {
-                await axios.post(`${API_URL}/auth/register`, payload)
+                await axios.post(`auth/register`, payload)
             }catch (e) {
                 dispatch('setMessage', {
                     value: error(e.message),
