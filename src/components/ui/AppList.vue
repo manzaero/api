@@ -20,8 +20,8 @@ export default {
       require: true
     }
   },
-  computed: mapGetters({lists: 'lists/getList'}),
-  methods: mapActions({getList: 'lists/getListApi'}),
+  computed: mapGetters({lists: 'api/getList'}),
+  methods: mapActions({getList: 'api/getListApi'}),
   name: "AppList"
 }
 </script>

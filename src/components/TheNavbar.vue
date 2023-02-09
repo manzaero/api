@@ -32,7 +32,7 @@ export default {
 
     return {
       logout: () => {
-        store.commit('auth/logout')
+        store.commit('api/logout')
         router.push('/auth')
         console.log('Вышел')
       }

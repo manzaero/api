@@ -1,14 +1,14 @@
 <template>
-  <app-footer title="Users">
+  <app-users title="Users">
 
 
-  </app-footer>
+  </app-users>
 </template>
 
 <script>
-import AppFooter from "@/components/ui/AppFooter";
+import AppUsers from "@/components/ui/AppUsers";
 export default {
-  components:{AppFooter},
+  components:{AppUsers},
   name: "Category"
 }
 </script>

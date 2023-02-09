@@ -34,8 +34,8 @@ export default {
       required: true
     }
   },
-  computed: mapGetters({users: "users/users"}),
-  methods: mapActions({getUsers: 'users/getUsers'}),
+  computed: mapGetters({users: "api/users"}),
+  methods: mapActions({getUsers: 'api/getUsers'}),
   data(){
     return {
       page: 1,

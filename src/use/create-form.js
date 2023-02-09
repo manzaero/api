@@ -57,7 +57,7 @@ export function useCreateForm(){
     )
 
     const createUser = handleSubmit(async values =>{
-        await store.dispatch("auth/register", values)
+        await store.dispatch("api/register", values)
         await alert('Удачное создание юзверя')
         await router.push('/')
     })

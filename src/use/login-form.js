@@ -26,7 +26,7 @@ export function useLoginForm(){
     );
     const onSubmit = handleSubmit(async values => {
         try {
-            await store.dispatch('auth/login', values)
+            await store.dispatch('api/login', values)
             await router.push('/')
         } catch (e) {
             console.log(e.message)
