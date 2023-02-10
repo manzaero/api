@@ -18,14 +18,12 @@
 		</div>
     <div v-if="users.length != 0" class="card flex-row">
       <button class="btn danger" @click="">prev</button>
-      <button class="btn danger" @click="">next</button>
-      <button class="btn danger" @click="clickLoad">delete</button>
+      <button class="btn" @click="">next</button>
     </div>
   </div>
 </template>
 
 <script>
-
 import {mapGetters, mapActions} from 'vuex'
 import axios from "axios";
 
@@ -39,18 +37,16 @@ export default {
   data(){
     return {
       users: {},
-      // page: 1,
-      // total: 0
+      page: 1,
+      total: 0
     }
   },
-  computed:{
-    clickLoad(){
-      return this.loadUsers
-    }
+  created(){
+    this.loadUsers(this.page)
   },
   methods:{
-    async loadUsers(){
-      const res = await axios.get(`users`, {
+    async loadUsers(numberPage){
+      const res = await axios.get(`users?page=${numberPage}`, {
         headers:{
           'Authorization': `bearer `+ JSON.parse(localStorage.getItem('jwt-token'))
         }
