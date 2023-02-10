@@ -54,6 +54,7 @@ export default {
       let data = res.data.data
       this.users = data
       let meta = res.data.meta.total
+      this.total = meta
       console.log(res, meta)
     }
   }
