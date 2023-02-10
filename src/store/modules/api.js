@@ -54,6 +54,11 @@ export default {
         },
         updateUsers(state, users){
             state.users = users
+        },
+        startPage(getters, ){
+        },
+        totalItem(getters, total){
+            getters.total = total
         }
     },
     actions:{
@@ -93,9 +98,9 @@ export default {
                 })
                     .then(usersApi => {
                         let users = usersApi.data.data;
-                        let links = usersApi.data.links;
+                        let total = usersApi.data.meta.total
                         commit('updateUsers', users);
-                        console.log(links)
+                        commit('totalItem', total);
                     })
             } catch (e) {
                 console.log(e.message)
