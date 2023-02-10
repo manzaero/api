@@ -10,6 +10,31 @@ export default {
             token: localStorage.getItem(JWT_TOKEN),
             categories: null,
             list: null,
+            page: 1,
+            total: 0
+        }
+    },
+    getters:{
+        token(state){
+            return state.token
+        },
+        isAuth(_, getters){
+            return !!getters.token
+        },
+        categories(state){
+            return state.categories
+        },
+        users(state){
+            return state.users
+        },
+        getList(state){
+            return state.list
+        },
+        page(state){
+            return state.page
+        },
+        total(state){
+            return state.total
         }
     },
     mutations:{
@@ -99,23 +124,6 @@ export default {
                     commit('loadList', list)
                     console.log(list)
                 })
-        }
-    },
-    getters:{
-        token(state){
-            return state.token
-        },
-        isAuth(_, getters){
-            return !!getters.token
-        },
-        categories(state){
-            return state.categories
-        },
-        users(state){
-            return state.users
-        },
-        getList(state){
-            return state.list
         }
     }
 }

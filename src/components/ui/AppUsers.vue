@@ -17,7 +17,7 @@
       <button class="btn warning">delete</button>
 		</div>
     <div v-if="users.length != 0" class="card flex-row">
-      <button class="btn danger">prev</button>
+      <button class="btn danger" @click="">prev</button>
       <button class="btn danger" @click="">next</button>
     </div>
   </div>
@@ -26,6 +26,7 @@
 <script>
 
 import {mapGetters, mapActions} from 'vuex'
+import axios from "axios";
 
 export default {
   props:{
@@ -34,8 +35,6 @@ export default {
       required: true
     }
   },
-  computed: mapGetters({users: "api/users"}),
-  methods: mapActions({getUsers: 'api/getUsers'}),
   data(){
     return {
       page: 1,
@@ -45,6 +44,12 @@ export default {
   async mounted(){
     await this.getUsers(this.page)
   },
+  computed: mapGetters({users: "api/users"}),
+  methods: {
+    ...mapActions({getUsers: 'api/getUsers'}),
+    next(){
 
+    }
+  },
 }
 </script>
