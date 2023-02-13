@@ -17,15 +17,20 @@
 
       <button class="btn warning">delete</button>
 		</div>
-
-    <the-pagination class="pagination" :total="total" :pageCount="users.length" @page-changed="loadUsers"/>
+    <Paginate
+        :page-count="20"
+        :click-handler="loadUsers"
+        :prev-text="'Prev'"
+        :next-text="'Next'"
+        :container-class="'className'">
+    </Paginate>
+<!--    <the-pagination class="pagination" :total="total" :pageCount="users.length" @page-changed="loadUsers"/>-->
   </div>
 </template>
 
 <script>
 import {mapGetters, mapActions} from 'vuex'
 import axios from "axios";
-import ThePagination from "@/components/ThePagination";
 export default {
   props:{
     title:{
@@ -35,7 +40,7 @@ export default {
   },
   data(){
     return {
-      users: {},
+      users: [],
       page: 1,
       total: 0
     }
@@ -55,10 +60,11 @@ export default {
       let meta = res.data.meta.total
       this.total = meta
       console.log(res, meta)
+    },
+    pageChange(){
+
     }
   },
-  components:{ThePagination}
-
   // async mounted(){
   //   await this.getUsers(this.page)
   // },
