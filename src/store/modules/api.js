@@ -1,5 +1,6 @@
-import axios, {get} from "axios";
+import axios from "axios";
 import {error} from "@/utils/error";
+import router from "@/router";
 const JWT_TOKEN = 'jwt-token'
 
 export default {
@@ -78,7 +79,7 @@ export default {
         async register({commit, dispatch}, payload){
             try {
                 await axios.post(`auth/register`, payload)
-            }catch (e) {
+            } catch (e) {
                 dispatch('setMessage', {
                     value: error(e.message),
                     type: 'danger'
@@ -96,13 +97,14 @@ export default {
                 })
                     .then(usersApi => {
                         let users = usersApi.data.data;
-                        let total = usersApi.data.meta.total
+                        let total = usersApi.data.meta.total;
                         commit('updateUsers', users);
                         commit('totalItem', total);
                     })
             } catch (e) {
                 if (e.message.length){
                     alert('Сессия истекла, пожалуйста авторизируйтесь!')
+                    return router.push('/auth')
                 }
                 console.log(e.message)
             }
