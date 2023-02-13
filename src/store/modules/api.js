@@ -101,6 +101,9 @@ export default {
                         commit('totalItem', total);
                     })
             } catch (e) {
+                if (e.message.length){
+                    alert('Сессия истекла, пожалуйста авторизируйтесь!')
+                }
                 console.log(e.message)
             }
         },
