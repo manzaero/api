@@ -110,6 +110,7 @@ h3 {
 	color: #C4DFE6 !important;
 }
 
+
 .btn:active {
 	box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
@@ -444,6 +445,7 @@ h3 {
 	align-items: center;
 }
 
+
 .badge {
 	font-size: 0.8rem;
 	border: 1px solid #eee;
@@ -454,6 +456,12 @@ h3 {
 .badge.primary {
 	border-color: #07575B;
 	color: #07575B;
+}
+
+.pagination {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 }
 
 .badge.danger {

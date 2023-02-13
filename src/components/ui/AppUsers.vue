@@ -14,19 +14,18 @@
 					<li>E-mail: {{ user.Email }}</li>
 					<li>Role: {{ user.Role }}</li>
 				</ul>
+
       <button class="btn warning">delete</button>
 		</div>
-    <div v-if="users.length != 0" class="card flex-row">
-      <button class="btn danger" @click="">prev</button>
-      <button class="btn" @click="">next</button>
-    </div>
+
+    <the-pagination class="pagination" :total="total" :pageCount="users.length" @page-changed="loadUsers"/>
   </div>
 </template>
 
 <script>
 import {mapGetters, mapActions} from 'vuex'
 import axios from "axios";
-
+import ThePagination from "@/components/ThePagination";
 export default {
   props:{
     title:{
@@ -57,7 +56,8 @@ export default {
       this.total = meta
       console.log(res, meta)
     }
-  }
+  },
+  components:{ThePagination}
 
   // async mounted(){
   //   await this.getUsers(this.page)

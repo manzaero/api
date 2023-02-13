@@ -1,10 +1,13 @@
 <template>
   <div class="card">
-    <ul>
-      <li v-for="p in totalPages" :key="p">
-        <button class="btn">{{p}}</button>
-      </li>
-    </ul>
+      <div v-for="p in totalPages" :key="p">
+        <button
+            class="btn"
+            :class="{active: currentPage === p}"
+            @click="changePage(p)"
+
+        >{{p}}</button>
+      </div>
   </div>
 </template>
 
@@ -32,5 +35,8 @@ export default {
 </script>
 
 <style scoped>
+.active {
+  background-color: #66A5AD;
+}
 
 </style>
