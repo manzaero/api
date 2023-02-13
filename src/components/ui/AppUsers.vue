@@ -4,14 +4,6 @@
 			{{ title }}
 		</div>
 		<hr>
-    <Paginate
-        class="pagination"
-        :page-count="3"
-        :click-handler="loadUsers"
-        :prev-text="'Prev'"
-        :next-text="'Next'"
-        :container-class="'pagination'">
-    </Paginate>
     <div v-if="users.length === 0" class="card">
       <h4>Не постаточно прав для просмотра списка пользователей</h4>
     </div>
@@ -25,48 +17,36 @@
 
       <button class="btn warning">delete</button>
 		</div>
-
+    <Paginate
+        v-if="users.length"
+        class="pagination"
+        :page-count="total"
+        :click-handler="loadUsers"
+        :prev-text="'<'"
+        :next-text="'>'"
+        :container-class="'pagination'"
+        :page-class="'waves-effect'">
+    </Paginate>
   </div>
 </template>
 
 <script>
-import axios from "axios";
+import {mapActions, mapGetters} from "vuex";
 export default {
-  components: {},
-
   props:{
     title:{
       type: String,
       required: true
     }
   },
-  data(){
-    return {
-      users: [],
-      page: 1,
-      total: 0
-    }
+  computed:{
+    ...mapGetters({
+      users: 'api/users',
+      total: 'api/total'})
   },
-  created(){
+  mounted(){
     this.loadUsers(this.page)
   },
-  methods:{
-    async loadUsers(numberPage){
-      const res = await axios.get(`users?page=${numberPage}`, {
-        headers:{
-          'Authorization': `bearer `+ JSON.parse(localStorage.getItem('jwt-token'))
-        }
-      })
-      let data = res.data.data
-      this.users = data
-      let meta = res.data.meta.total
-      this.total = meta
-      console.log(res, meta)
-    }
-  }
+  methods:{...mapActions({loadUsers: "api/getUsers"})}
 }
 </script>
-
-<style>
-
-</style>

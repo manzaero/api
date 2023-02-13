@@ -34,7 +34,7 @@ export default {
             return state.page
         },
         total(state){
-            return state.total
+            return state.total / 15
         }
     },
     mutations:{
@@ -54,8 +54,6 @@ export default {
         },
         updateUsers(state, users){
             state.users = users
-        },
-        startPage(getters, ){
         },
         totalItem(getters, total){
             getters.total = total
