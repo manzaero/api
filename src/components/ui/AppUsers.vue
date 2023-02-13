@@ -4,6 +4,14 @@
 			{{ title }}
 		</div>
 		<hr>
+    <Paginate
+        class="pagination"
+        :page-count="3"
+        :click-handler="loadUsers"
+        :prev-text="'Prev'"
+        :next-text="'Next'"
+        :container-class="'pagination'">
+    </Paginate>
     <div v-if="users.length === 0" class="card">
       <h4>Не постаточно прав для просмотра списка пользователей</h4>
     </div>
@@ -17,21 +25,15 @@
 
       <button class="btn warning">delete</button>
 		</div>
-    <Paginate
-        :page-count="20"
-        :click-handler="loadUsers"
-        :prev-text="'Prev'"
-        :next-text="'Next'"
-        :container-class="'className'">
-    </Paginate>
-<!--    <the-pagination class="pagination" :total="total" :pageCount="users.length" @page-changed="loadUsers"/>-->
+
   </div>
 </template>
 
 <script>
-import {mapGetters, mapActions} from 'vuex'
 import axios from "axios";
 export default {
+  components: {},
+
   props:{
     title:{
       type: String,
@@ -60,20 +62,11 @@ export default {
       let meta = res.data.meta.total
       this.total = meta
       console.log(res, meta)
-    },
-    pageChange(){
-
     }
-  },
-  // async mounted(){
-  //   await this.getUsers(this.page)
-  // },
-  // computed: mapGetters({users: "api/users"}),
-  // methods: {
-  //   ...mapActions({getUsers: 'api/getUsers'}),
-  //   next(){
-  //
-  //   }
-  // },
+  }
 }
 </script>
+
+<style>
+
+</style>
