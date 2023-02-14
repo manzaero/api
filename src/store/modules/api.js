@@ -10,7 +10,7 @@ export default {
             users: [],
             token: localStorage.getItem(JWT_TOKEN),
             categories: null,
-            list: null,
+            lists: null,
             page: 1,
             total: 0
         }
@@ -28,8 +28,8 @@ export default {
         users(state){
             return state.users
         },
-        getList(state){
-            return state.list
+        lists(state){
+            return state.lists
         },
         page(state){
             return state.page
@@ -51,7 +51,7 @@ export default {
             getters.categories = cat
         },
         loadList(getters, list){
-            getters.getList = list
+            getters.getLists = list
         },
         updateUsers(state, users){
             state.users = users
@@ -110,28 +110,46 @@ export default {
             }
         },
         async getCategory({commit}){
-            await axios.get(`category`,{
-                headers:{
-                    'Authorization': `bearer ` + JSON.parse(localStorage.getItem('jwt-token'))
-                }
-            })
-                .then(res => {
-                    let cat = res.data.data;
-                    commit('loadCat', cat);
-                    console.log(cat)
+            try {
+                await axios.get(`category`,{
+                    headers:{
+                        'Authorization': `bearer ` + JSON.parse(localStorage.getItem('jwt-token'))
+                    }
                 })
+                    .then(res => {
+                        let cat = res.data.data;
+                        commit('loadCat', cat);
+                        console.log(cat)
+                    })
+            } catch (e) {
+                if (e.message.length){
+                    alert('Сессия истекла, пожалуйста авторизируйтесь!')
+                    console.log(e)
+                }
+                console.log(e.message)
+            }
+
         },
         async getListApi({commit}){
-            await axios.get(`category/list`, {
-                headers:{
-                    'Authorization': `bearer ` + JSON.parse(localStorage.getItem('jwt-token'))
-                }
-            })
-                .then(res => {
-                    let list = res.data.data;
-                    commit('loadList', list)
-                    console.log(list)
+            try {
+                await axios.get(`category/list`,{
+                    headers:{
+                        'Authorization': `bearer ` + JSON.parse(localStorage.getItem('jwt-token'))
+                    }
                 })
+                    .then(res => {
+                        let list = res.data.data;
+                        commit('loadList', list);
+                        console.log(list)
+                    })
+            } catch (e) {
+                if (e.message.length){
+                    alert('Сессия истекла, пожалуйста авторизируйтесь!')
+                    console.log(e)
+                }
+                console.log(e.message)
+            }
+
         }
     }
 }

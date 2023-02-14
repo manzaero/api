@@ -1,5 +1,6 @@
 import { createStore, createLogger } from 'vuex'
 import api from "@/store/modules/api";
+import request from "@/store/modules/request.module";
 
 const plugins = []
 
@@ -31,6 +32,7 @@ export default createStore({
     }
   },
   modules: {
-    api
+    api,
+    request
   }
 })
