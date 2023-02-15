@@ -22,7 +22,11 @@ export default {
         async create({commit, dispatch}, payload){
             try {
                 const token = store.getters["api/token"]
-                const {data} = await axios.post(`/category`, payload)
+                const {data} = await axios.post(`/category`, payload, {
+                    headers:{
+                        'Authorization': `bearer ` + JSON.parse(localStorage.getItem('jwt-token'))
+                    }
+                })
                 console.log(data)
                 dispatch('setMessage', {
                     value: 'Категория успешно создана!',
