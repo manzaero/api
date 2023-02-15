@@ -1,43 +1,25 @@
 <template>
   <form @submit.prevent="onSubmit">
     <div class="form-control" :class="{invalid: nError}">
-      <label for="name">Ф И О</label>
-      <input type="text" id="name" v-model="name" @blur="nBlur">
+      <label for="name">Имя</label>
+      <input type="text" id="name" v-model="Name" @blur="nBlur">
       <small v-if="nError">{{nError}}</small>
     </div>
 
-    <div class="form-control" :class="{invalid: pError}">
-      <label for="phone">Телефон</label>
-      <input type="text" id="phone" v-model="phone" @blur="pError">
-      <small v-if="pError">{{pError}}</small>
-    </div>
 
-    <div class="form-control" :class="{invalid: aError}">
-      <label for="amount">Сумма</label>
-      <input type="number" id="amount" v-model.number="amount" @blur="aBlur">
-      <small v-if="aError">{{aError}}</small>
-    </div>
-
-    <div class="form-control">
-      <label for="status">Статус</label>
-      <select name="status" id="status" v-model="status">
-        <option value="active">Активный</option>
-        <option value="cancelled">Отменён</option>
-        <option value="pending">В ожидании</option>
-        <option value="done">Завёршён</option>
-      </select>
-    </div>
     <button class="btn danger" :disabled="isSubmitting">Добавить</button>
   </form>
 </template>
 
 <script>
 import {useRequestForm} from "@/use/request-form";
+import {useStore} from "vuex";
 export default {
   emits:['created'],
   setup(_, {emit}){
+    const store = useStore()
     const submit = async values => {
-      console.log(values)
+      await store.dispatch('request/create', values)
       emit('created')
     }
 

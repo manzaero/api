@@ -19,13 +19,20 @@ export default {
         }
     },
     actions:{
-        async create({commit}, payload){
+        async create({commit, dispatch}, payload){
             try {
                 const token = store.getters["api/token"]
-                const {data} = await axios.post(`/category?auth=${token}`)
+                const {data} = await axios.post(`/category`, payload)
                 console.log(data)
+                dispatch('setMessage', {
+                    value: 'Категория успешно создана!',
+                    type: 'primary'
+                }, {root: true})
             } catch (e) {
-                
+                dispatch('setMessage', {
+                    value: e.message,
+                    type: 'danger'
+                }, {root: true})
             }
         }
     }

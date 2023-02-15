@@ -8,26 +8,12 @@ export function useRequestForm(fn){
         }
     });
 
-    const {value: name, errorMessage: nError, handleBlur: nBlur} = useField(
-        'name',
+    const {value: Name, errorMessage: nError, handleBlur: nBlur} = useField(
+        'Name',
         yup
             .string()
             .trim()
-            .required('Введите ФИО')
-    )
-    const {value: phone, errorMessage: pError, handleBlur: pBlur} = useField(
-        'phone',
-        yup
-            .string( )
-            .trim()
-            .required('Обязательно для заполнения')
-    )
-    const {value: amount, errorMessage: aError, handleBlur: aBlur} = useField(
-        'amount',
-        yup
-            .number()
-            .required('Введите сумму')
-            .min(0, 'Сумма не может быть меньше 0')
+            .required('Введите наименование')
     )
     const {value: status} = useField('status')
 
@@ -37,14 +23,8 @@ export function useRequestForm(fn){
         isSubmitting,
         onSubmit,
         status,
-        name,
+        Name,
         nError,
-        nBlur,
-        phone,
-        pError,
-        pBlur,
-        amount,
-        aError,
-        aBlur
+        nBlur
     }
 }
