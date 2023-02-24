@@ -163,7 +163,6 @@ export default createStore({
     }
   },
   modules: {
-    data,
     request
   }
 })

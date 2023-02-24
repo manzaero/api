@@ -1,4 +1,5 @@
 import axios from "@/axios/api";
+import api from "@/axios/api";
 
 export default {
     namespaced: true,
@@ -50,11 +51,7 @@ export default {
     actions:{
         async create({commit, dispatch}, payload){
             try {
-                const {data} = await axios.post(`/category`, payload, {
-                    headers:{
-                        'Authorization': `bearer ` + JSON.parse(localStorage.getItem('jwt-token'))
-                    }
-                })
+                const {data} = await api.post(`/category`, payload)
                 console.log(payload)
                 console.log(data)
                 dispatch('setMessage', {
