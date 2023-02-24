@@ -15,16 +15,56 @@ export function useRequestForm(fn){
             .trim()
             .required('Введите наименование')
     )
-    const {value: status} = useField('status')
+    const {value: FirstName, errorMessage: fError, handleBlur: fBlur} = useField(
+        'FirstName',
+        yup
+            .string()
+            .trim()
+            .required('Введите наименование')
+    )
+    const {value: LastName, errorMessage: lError, handleBlur: lBlur} = useField(
+        'LastName',
+        yup
+            .string()
+            .trim()
+            .required('Введите наименование')
+    )
+    const {value: Email, errorMessage: eError, handleBlur: eBlur} = useField(
+        'Email',
+        yup
+            .string()
+            .trim()
+            .required('Введите наименование')
+    )
+    const {value: Phone, errorMessage: pError, handleBlur: pBlur} = useField(
+        'Phone',
+        yup
+            .string()
+            .trim()
+            .required('Введите наименование')
+    )
+    // const {value: status} = useField('status')
 
     const onSubmit = handleSubmit(fn)
 
     return {
         isSubmitting,
         onSubmit,
-        status,
+        // status,
         Name,
         nError,
-        nBlur
+        nBlur,
+        FirstName,
+        fError,
+        fBlur,
+        LastName,
+        lError,
+        lBlur,
+        Email,
+        eError,
+        eBlur,
+        Phone,
+        pError,
+        pBlur
     }
 }

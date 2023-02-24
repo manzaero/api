@@ -122,11 +122,11 @@ export default {
                         console.log(cat)
                     })
             } catch (e) {
-                if (e.message.length){
+                if (e.response.status === 401){
                     alert('Сессия истекла, пожалуйста авторизируйтесь!')
-                    console.log(e)
+                    return router.push('/auth')
                 }
-                console.log(e.message)
+                console.log(e)
             }
 
         },
