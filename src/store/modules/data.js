@@ -19,9 +19,9 @@ export default {
         token(state){
             return state.token
         },
-        isAuth(_, getters){
-            return !!getters.token
-        },
+        // isAuth(_, getters){
+        //     return !!getters.token
+        // },
         categories(state){
             return state.categories
         },
@@ -61,21 +61,21 @@ export default {
         }
     },
     actions:{
-        async login({commit, dispatch}, payload){
-            try {
-                const apiToken = await axios.post(`auth/login`, payload)
-                commit('setToken', JSON.stringify(apiToken.data.access_token))
-                commit('clearMessage', null, {root: true})
-            } catch (e) {
-                dispatch('setMessage', {
-                    value: error(e.message),
-                    type: 'danger'
-                }, {root: true})
-                console.log(error(e.message))
-                console.dir(e)
-                throw new Error(e)
-            }
-        },
+        // async login({commit, dispatch}, payload){
+        //     try {
+        //         const apiToken = await axios.post(`auth/login`, payload)
+        //         commit('setToken', JSON.stringify(apiToken.data.access_token))
+        //         commit('clearMessage', null, {root: true})
+        //     } catch (e) {
+        //         dispatch('setMessage', {
+        //             value: error(e.message),
+        //             type: 'danger'
+        //         }, {root: true})
+        //         console.log(error(e.message))
+        //         console.dir(e)
+        //         throw new Error(e)
+        //     }
+        // },
         async register({commit, dispatch}, payload){
             try {
                 await axios.post(`auth/register`, payload)
@@ -109,27 +109,27 @@ export default {
                 console.log(e.message)
             }
         },
-        async getCategory({commit}){
-            try {
-                await axios.get(`category`,{
-                    headers:{
-                        'Authorization': `bearer ` + JSON.parse(localStorage.getItem('jwt-token'))
-                    }
-                })
-                    .then(res => {
-                        let cat = res.data.data;
-                        commit('loadCat', cat);
-                        console.log(cat)
-                    })
-            } catch (e) {
-                if (e.response.status === 401){
-                    alert('Сессия истекла, пожалуйста авторизируйтесь!')
-                    return router.push('/auth')
-                }
-                console.log(e)
-            }
-
-        },
+        // async getCategory({commit}){
+        //     try {
+        //         await axios.get(`category`,{
+        //             headers:{
+        //                 'Authorization': `bearer ` + JSON.parse(localStorage.getItem('jwt-token'))
+        //             }
+        //         })
+        //             .then(res => {
+        //                 let cat = res.data.data;
+        //                 commit('loadCat', cat);
+        //                 console.log(cat)
+        //             })
+        //     } catch (e) {
+        //         if (e.response.status === 401){
+        //             alert('Сессия истекла, пожалуйста авторизируйтесь!')
+        //             return router.push('/auth')
+        //         }
+        //         console.log(e)
+        //     }
+        //
+        // },
         async getListApi({commit}){
             try {
                 await axios.get(`category/list`,{

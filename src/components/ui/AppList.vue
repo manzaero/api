@@ -21,8 +21,8 @@ export default {
       require: true
     }
   },
-  computed: mapGetters({lists: 'api/lists'}),
-  methods: mapActions({getList: 'api/getListApi'}),
+  computed: mapGetters({lists: 'data/lists'}),
+  methods: mapActions({getList: 'data/getListApi'}),
   name: "AppList"
 }
 </script>

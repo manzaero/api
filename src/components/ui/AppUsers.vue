@@ -5,7 +5,7 @@
 		</div>
 		<hr>
     <div v-if="users.length === 0" class="card">
-      <h4>Не постаточно прав для просмотра списка пользователей</h4>
+      <h4>Не достаточно прав для просмотра списка пользователей</h4>
     </div>
 		<div v-else class="card" v-for="user in users" :key="user.id">
 				<ul>
@@ -41,12 +41,12 @@ export default {
   },
   computed:{
     ...mapGetters({
-      users: 'api/users',
-      total: 'api/total'})
+      users: 'data/users',
+      total: 'data/total'})
   },
   mounted(){
     this.loadUsers(this.page)
   },
-  methods:{...mapActions({loadUsers: "api/getUsers"})}
+  methods:{...mapActions({loadUsers: "data/getUsers"})}
 }
 </script>

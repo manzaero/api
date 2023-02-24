@@ -1,6 +1,11 @@
 import { createStore, createLogger } from 'vuex'
-import api from "@/store/modules/api";
+import data from "@/store/modules/data";
 import request from "@/store/modules/request.module";
+import api from "@/axios/api";
+import {error} from "@/utils/error";
+import router from "@/router";
+import axios from "axios";
+const JWT_TOKEN = 'jwt-token'
 
 const plugins = []
 
@@ -12,7 +17,36 @@ export default createStore({
   plugins,
   state(){
     return {
-      message: null
+      message: null,
+      users: [],
+      token: localStorage.getItem(JWT_TOKEN),
+      categories: null,
+      lists: null,
+      page: 1,
+      total: 0
+    }
+  },
+  getters:{
+    token(state){
+      return state.token
+    },
+    isAuth(_, getters){
+      return !!getters.token
+    },
+    categories(state){
+      return state.categories
+    },
+    users(state){
+      return state.users
+    },
+    lists(state){
+      return state.lists
+    },
+    page(state){
+      return state.page
+    },
+    total(state){
+      return state.total / 15
     }
   },
   mutations: {
@@ -21,6 +55,26 @@ export default createStore({
     },
     clearMessage(state){
       state.message = null
+    },
+    setToken(state, token){
+      state.token = token
+      localStorage.setItem(JWT_TOKEN, token)
+    },
+    logout(state){
+      state.token = null
+      localStorage.removeItem(JWT_TOKEN)
+    },
+    loadCat(getters, cat){
+      getters.categories = cat
+    },
+    loadList(getters, list){
+      getters.getLists = list
+    },
+    updateUsers(state, users){
+      state.users = users
+    },
+    totalItem(getters, total){
+      getters.total = total
     }
   },
   actions: {
@@ -29,10 +83,46 @@ export default createStore({
       setTimeout(() => {
         commit('clearMessage')
       }, 5000)
+    },
+    async login({commit, dispatch}, payload){
+      try {
+        const apiToken = await api.post(`auth/login`, payload);
+        commit('setToken', JSON.stringify(apiToken.data.access_token));
+        commit('clearMessage', null, {root: true})
+      } catch (e) {
+        dispatch('setMessage', {
+          value: error(e.message),
+          type: 'danger'
+        }, {root: true})
+        console.log(error(e.message))
+        console.dir(e)
+        throw new Error(e)
+      }
+    },
+    async getCategory({commit}){
+      try {
+        await axios.get(`category`,{
+          headers:{
+            'Authorization': `bearer ` + JSON.parse(localStorage.getItem('jwt-token'))
+          }
+        })
+            .then(res => {
+              let cat = res.data.data;
+              commit('loadCat', cat);
+              console.log(cat)
+            })
+      } catch (e) {
+        if (e.response.status === 401){
+          alert('Сессия истекла, пожалуйста авторизируйтесь!')
+          return router.push('/auth')
+        }
+        console.log(e)
+      }
+
     }
   },
   modules: {
-    api,
+    data,
     request
   }
 })

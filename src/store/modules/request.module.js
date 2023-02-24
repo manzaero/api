@@ -1,5 +1,4 @@
-import axios from "@/axios/request";
-import store from "@/store";
+import axios from "@/axios/api";
 
 export default {
     namespaced: true,
@@ -51,7 +50,6 @@ export default {
     actions:{
         async create({commit, dispatch}, payload){
             try {
-                const token = store.getters["api/token"]
                 const {data} = await axios.post(`/category`, payload, {
                     headers:{
                         'Authorization': `bearer ` + JSON.parse(localStorage.getItem('jwt-token'))
