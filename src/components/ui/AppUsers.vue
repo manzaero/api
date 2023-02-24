@@ -41,12 +41,12 @@ export default {
   },
   computed:{
     ...mapGetters({
-      users: 'data/users',
-      total: 'data/total'})
+      users: 'users',
+      total: 'total'})
   },
   mounted(){
     this.loadUsers(this.page)
   },
-  methods:{...mapActions({loadUsers: "data/getUsers"})}
+  methods:{...mapActions({loadUsers: "getUsers"})}
 }
 </script>

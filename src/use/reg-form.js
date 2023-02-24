@@ -59,7 +59,7 @@ export function useRegForm(){
 
     const regSubmit = handleSubmit(async values => {
         try {
-            await store.dispatch('api/register', values);
+            await store.dispatch('register', values);
             await router.push('/auth')
         } catch (e) {
             console.log(e)

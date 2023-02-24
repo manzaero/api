@@ -4,7 +4,6 @@ import request from "@/store/modules/request.module";
 import api from "@/axios/api";
 import {error} from "@/utils/error";
 import router from "@/router";
-import axios from "axios";
 const JWT_TOKEN = 'jwt-token'
 
 const plugins = []
@@ -101,11 +100,7 @@ export default createStore({
     },
     async getCategory({commit}){
       try {
-        await axios.get(`category`,{
-          headers:{
-            'Authorization': `bearer ` + JSON.parse(localStorage.getItem('jwt-token'))
-          }
-        })
+        await api.get(`/category`)
             .then(res => {
               let cat = res.data.data;
               commit('loadCat', cat);
@@ -117,6 +112,52 @@ export default createStore({
           return router.push('/auth')
         }
         console.log(e)
+      }
+
+    },
+    async register({commit, dispatch}, payload){
+      try {
+        await api.post(`auth/register`, payload)
+      } catch (e) {
+        dispatch('setMessage', {
+          value: error(e.message),
+          type: 'danger'
+        }, {root: true})
+        console.log(error(e.message))
+        throw new Error(e)
+      }
+    },
+    async getUsers({commit}, pageNumber){
+      try {
+        await api.get(`users?page=${pageNumber}`)
+            .then(usersApi => {
+              let users = usersApi.data.data;
+              let total = usersApi.data.meta.total;
+              commit('updateUsers', users);
+              commit('totalItem', total);
+            })
+      } catch (e) {
+        if (e.message.length){
+          alert('Сессия истекла, пожалуйста авторизируйтесь!')
+          return router.push('/auth')
+        }
+        console.log(e.message)
+      }
+    },
+    async getListApi({commit}){
+      try {
+        await api.get(`category/list`)
+            .then(res => {
+              let list = res.data.data;
+              commit('loadList', list);
+              console.log(list)
+            })
+      } catch (e) {
+        if (e.message.length){
+          alert('Сессия истекла, пожалуйста авторизируйтесь!')
+          console.log(e)
+        }
+        console.log(e.message)
       }
 
     }
