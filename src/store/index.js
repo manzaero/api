@@ -1,5 +1,4 @@
 import { createStore, createLogger } from 'vuex'
-import data from "@/store/modules/data";
 import request from "@/store/modules/request.module";
 import api from "@/axios/api";
 import {error} from "@/utils/error";
@@ -100,7 +99,7 @@ export default createStore({
     },
     async getCategory({commit}){
       try {
-        await api.get(`/category`)
+        await api.get(`category`)
             .then(res => {
               let cat = res.data.data;
               commit('loadCat', cat);

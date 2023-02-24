@@ -1,4 +1,3 @@
-import axios from "@/axios/api";
 import api from "@/axios/api";
 
 export default {
