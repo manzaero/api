@@ -44,7 +44,9 @@ export default createStore({
       return state.page
     },
     total(state){
-      return state.total / 15
+      if (state.total) {
+        return Math.ceil(state.total / 15)
+      }
     }
   },
   mutations: {
