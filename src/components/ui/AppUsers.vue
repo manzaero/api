@@ -44,9 +44,9 @@ export default {
       users: 'users',
       total: 'total'})
   },
+  methods:{...mapActions({loadUsers: "getUsers"})},
   mounted(){
     this.loadUsers(this.page)
   },
-  methods:{...mapActions({loadUsers: "getUsers"})}
 }
 </script>

@@ -86,7 +86,7 @@ export default createStore({
     },
     async login({commit, dispatch}, payload){
       try {
-        const apiToken = await api.post(`auth/login`, payload);
+        const apiToken = await api.post(`/auth/login`, payload);
         commit('setToken', JSON.stringify(apiToken.data.access_token));
         commit('clearMessage', null, {root: true})
       } catch (e) {

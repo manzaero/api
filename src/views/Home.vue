@@ -25,6 +25,7 @@ import AppPage from "@/components/ui/AppPage";
 import RequestTable from "@/components/request/RequestTable";
 import AppModal from "@/components/ui/AppModal";
 import RequestModal from "@/components/request/RequestModal";
+import {mapGetters} from "vuex";
 export default {
   setup(){
     const modal = ref(false)
