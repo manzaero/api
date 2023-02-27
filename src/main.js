@@ -7,6 +7,6 @@ import './theme.css'
 import axios from "axios";
 import Paginate from "vuejs-paginate-next";
 
-axios.defaults.baseURL='https://test.octopus.uz/api/v1'
+// axios.defaults.baseURL='https://test.octopus.uz/api/v1'
 
 createApp(App).component('Paginate', Paginate).use(store).use(router).mount('#app')

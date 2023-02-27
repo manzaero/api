@@ -99,7 +99,11 @@ export default createStore({
     },
     async getCategory({commit}){
       try {
-        await api.get(`category`)
+        await api.get(`/category`
+          //   {headers: {
+          //   'Authorization': `bearer ${JSON.parse(localStorage.getItem(JWT_TOKEN))}`
+          // }}
+        )
             .then(res => {
               let cat = res.data.data;
               commit('loadCat', cat);
